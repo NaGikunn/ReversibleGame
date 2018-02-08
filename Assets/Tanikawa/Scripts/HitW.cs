@@ -32,6 +32,7 @@ public class HitW : MonoBehaviour
         {
             Instantiate(white, transform.position, transform.rotation);
             OnHit = false;
+            Destroy(this.gameObject, 1.0f);
         }
     }
 }
