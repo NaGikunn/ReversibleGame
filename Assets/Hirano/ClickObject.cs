@@ -5,7 +5,8 @@ using UnityEngine;
 public class ClickObject : MonoBehaviour
 {
 	public GameObject stone;
-
+	public GameObject stone2;
+	private bool Black = false;
 	// Use this for initialization
 	void Start ()
 	{
@@ -34,7 +35,16 @@ public class ClickObject : MonoBehaviour
 				Clickobj = hit.collider.gameObject;
 				pos = Clickobj.transform.position;
 				pos.y += 1;
-				Instantiate(stone, pos, Quaternion.identity);
+				if (!Black)
+				{
+					Instantiate(stone, pos, Quaternion.identity);
+					Black = true;
+				}
+				else
+				{
+					Instantiate(stone2, pos, Quaternion.identity);
+					Black = false;
+				}
 			}
 		}
 		return Clickobj;
