@@ -15,11 +15,6 @@ public class Hit : MonoBehaviour
 
         transform.position = StartPos;
     }
-
-    public void Effecter()
-    {
-        Instantiate(white, transform.position, transform.rotation);
-    }
 	
 	// Update is called once per frame
 	void Update ()
