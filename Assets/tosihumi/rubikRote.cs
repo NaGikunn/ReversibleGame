@@ -5,9 +5,13 @@ using UnityEngine;
 public class rubikRote : MonoBehaviour {
 
     int[,] hairetu;
-    public GameObject ga;
-	// Use this for initialization
-	void Start() {
+    public GameObject ga;//盤面にするオブジェクト
+    bool Order;//手版を今どちらにあるかを判定する
+    float downx,downy;//マウスポジションがどちらにうごいたか（ダウンバージョン）
+    float upx,upy;//マウスポジションがどちらにうごいたか（アップバージョン）
+    int tposx, tposy;//配列データを取得する際のポジション
+    // Use this for initialization
+    void Start() {
         /*配列データは‐１はキューブで使わない部分
          ０の部分は駒が現在おかれていない場所
          １が白駒がおかれている場所
@@ -26,10 +30,7 @@ public class rubikRote : MonoBehaviour {
                 {
                     hairetu[j, i] = 0;
                 }
-                if (hairetu[j, i] >= 0)
-                {
-                    // Instantiate(ga).transform.position(x+ i, y+ j);
-                }
+
             }
         }
     }
@@ -38,6 +39,41 @@ public class rubikRote : MonoBehaviour {
 	}
     public void rote()
     {
-
+        /*回る時に配列だけで回してる時に
+         * ここから変更している*/
+        float moveposx, moveposy;
+        moveposx =upx - downx;
+        moveposy =upy - downy;
+        if (moveposy < moveposx)
+        {
+            
+        }
+        else if (moveposy > moveposx)
+        {
+            //hairetu[,]j+4;
+        }
+        
+    }
+    void TouchPos()
+    {
+        /*盤面をタッチしたpositionを取得してその場所の
+         * 配列データを持ってきて何かする*/
+        if (Input.GetMouseButtonDown(0))
+        {
+            
+            //downx = mousePositiondown(x);
+            //downy = mousePositiondown(y);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            //upx = mousePositionup(x);
+            //upy = mousePositionup(y);
+        }
+    }
+    void Framepos()
+    {
+        /*盤面をタッチした時にその場所にオブジェクトが置いてるかを
+         * 確認して置いてなかったら配列データ内に１か２をいれる*/
+        //hairetu[,]=1or2;
     }
 }
