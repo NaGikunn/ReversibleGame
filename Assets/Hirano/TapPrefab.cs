@@ -19,8 +19,8 @@ public class TapPrefab : MonoBehaviour
 		if (Input.GetMouseButtonDown(0))
 		{
 			tapPosition = Input.mousePosition;
-			tapPosition.z = 10.0f;
-			Instantiate(stone, Camera.main.ScreenToViewportPoint(tapPosition), stone.transform.rotation);
+			tapPosition.z = 6.0f;
+			Instantiate(stone, Camera.main.ScreenToWorldPoint(tapPosition), stone.transform.rotation);
 		}
 	}
 }
