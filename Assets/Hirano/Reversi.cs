@@ -18,22 +18,6 @@ public class Reversi : MonoBehaviour
 			Board[i, 3] += 1;
 		}
 
-		//for (int j = 0; j <= 3; j++)
-		//{
-		//	Board[0, j] += 1;
-		//	Board[1, j] += 1;
-		//	Board[2, j] += 1;
-		//	Board[3, j] += 1;
-		//}
-
-		//for (int i = 0; i <= 3; i++)
-		//{
-		//	for (int j = 0; j <= 3; j++)
-		//	{
-		//		Board[i, j] += 1;
-		//	}
-		//}
-
 		foreach (int i in Board)
 		{
 			Debug.Log(i);
