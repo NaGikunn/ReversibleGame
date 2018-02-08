@@ -9,7 +9,7 @@ public class rubikRote : MonoBehaviour {
     bool Order;//手版を今どちらにあるかを判定する
     float downx,downy;//マウスポジションがどちらにうごいたか（ダウンバージョン）
     float upx,upy;//マウスポジションがどちらにうごいたか（アップバージョン）
-    int tposx, tposy;//配列データを取得する際のポジション
+    int tposx=0, tposy=0;//配列データを取得する際のポジション
     // Use this for initialization
     void Start() {
         /*配列データは‐１はキューブで使わない部分
@@ -30,7 +30,10 @@ public class rubikRote : MonoBehaviour {
                 {
                     hairetu[j, i] = 0;
                 }
-
+                if (hairetu[j, i] >= 0)
+                {
+                    Instantiate(ga,j,i,0);
+                }
             }
         }
     }
