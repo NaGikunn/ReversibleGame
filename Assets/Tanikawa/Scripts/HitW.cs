@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hit : MonoBehaviour
+public class HitW : MonoBehaviour
 {
     public GameObject white;
+
+    bool OnHit = false;
 
 	// Use this for initialization
 	void Start ()
@@ -14,16 +16,23 @@ public class Hit : MonoBehaviour
 		white= (GameObject)Resources.Load("Prefab/WhiteHit");
 
         transform.position = StartPos;
+
+        OnHit =true;
     }
 
     public void Effecter()
     {
-        Instantiate(white, transform.position, transform.rotation);
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
         
-	}
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+       if(OnHit==true)
+        {
+            Instantiate(white, transform.position, transform.rotation);
+            OnHit = false;
+            Destroy(this.gameObject, 1.0f);
+        }
+    }
 }

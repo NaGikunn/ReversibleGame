@@ -53,10 +53,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4102533427064978}
+  - component: {fileID: 114623473930344342}
   - component: {fileID: 198217232954572162}
   - component: {fileID: 199668973657802340}
   m_Layer: 0
-  m_Name: 'BlackHit '
+  m_Name: BlackHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,6 +135,17 @@ Transform:
   m_Father: {fileID: 4102533427064978}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114623473930344342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480053502548238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cd1cc15a7528245992a365761b5369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198043108835871020
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -194,7 +206,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1528588615
+  randomSeed: -1480221374
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3520,7 +3532,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1387943923
+  randomSeed: -622378028
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6867,7 +6879,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -2053709421
+  randomSeed: 1240195125
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10364,7 +10376,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 503388858
+  randomSeed: -32050390
   InitialModule:
     serializedVersion: 3
     enabled: 1

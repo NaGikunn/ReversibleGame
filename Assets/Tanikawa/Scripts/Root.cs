@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Root : MonoBehaviour
 {
-    GameObject WhiteOsero;
-    GameObject BlackOsero;
+    public GameObject WhiteOsero;
+    public GameObject BlackOsero;
 
     // Use this for initialization
     void Start ()
@@ -20,7 +20,6 @@ public class Root : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(WhiteOsero);
-
         }	
 
         if(Input.GetMouseButtonDown(1))
