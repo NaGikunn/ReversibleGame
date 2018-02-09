@@ -31,9 +31,13 @@ public class rubikRote : MonoBehaviour {
                     hairetu[j, i] = 0;
                 }
                 if (hairetu[j, i] >= 0)
+<<<<<<< Updated upstream
                 {
                     //Instantiate(ga,j,i,0);
                 }
+=======
+                {                }
+>>>>>>> Stashed changes
             }
         }
     }
