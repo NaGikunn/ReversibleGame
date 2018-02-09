@@ -1394,6 +1394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stone: {fileID: 1566558563825882, guid: 75968d47e3bf72249b9709c65f355a98, type: 2}
+  stone2: {fileID: 1570509696724610, guid: c3a44c17ba2ab0049aaf9ebe5d8e9aa5, type: 2}
 --- !u!1 &734968630
 GameObject:
   m_ObjectHideFlags: 0

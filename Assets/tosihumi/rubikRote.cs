@@ -32,7 +32,7 @@ public class rubikRote : MonoBehaviour {
                 }
                 if (hairetu[j, i] >= 0)
                 {
-                    Instantiate(ga,j,i,0);
+                    //Instantiate(ga,j,i,0);
                 }
             }
         }
