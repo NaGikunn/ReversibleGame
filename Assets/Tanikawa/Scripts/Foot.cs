@@ -12,12 +12,15 @@ public class Foot : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        alpha = 1.0f;
+
         FootA.color = new Color(FootA.color.r, FootA.color.g, FootA.color.b, alpha);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        alpha -= 0.1f;
+        alpha -= 0.01f;
+        FootA.color = new Color(FootA.color.r, FootA.color.g, FootA.color.b, alpha);
     }
 }
