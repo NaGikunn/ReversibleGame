@@ -22,5 +22,9 @@ public class Foot : MonoBehaviour
     {
         alpha -= 0.01f;
         FootA.color = new Color(FootA.color.r, FootA.color.g, FootA.color.b, alpha);
+        if (alpha <= 0.0f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class FootIns : MonoBehaviour
 {
-    GameObject FootB;
-    GameObject FootW;
+    public GameObject FootB,FootW;
 
 	// Use this for initialization
 	void Start ()
     {
-        FootB = (GameObject)Resources.Load("Prefab/P_Tex_Foot(B)");
-        FootW = (GameObject)Resources.Load("Prefab/P_Tex_Foot(W)");
+
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            Instantiate(FootB);
+            GameObject obj = Instantiate(FootB) as GameObject;
             Debug.Log("kuro");
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            Instantiate(FootW);
+            //Instantiate(FootW);
+            GameObject obj = Instantiate(FootW) as GameObject;
             Debug.Log("shiro");
         }
     }
