@@ -12,25 +12,30 @@ public class FadePanel : MonoBehaviour
 
     private SceneLoad SL;
 
-    void Start(){
+    void Start()
+    {
         Tile = gameObject;
         SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
     }
 
-    public void FadeInStart(){
+    public void FadeInStart()
+    {
         Tile.SetActive(true);
             StartCoroutine(FadeIn());
     }
-    public void FadeOutStart(){
+    public void FadeOutStart()
+    {
             StartCoroutine(FadeOut());
     }
 
-    public void Reset(){
+    public void Reset()
+    {
         Tile.transform.localScale = new Vector3(Tile.transform.localScale.x,1,Tile.transform.localScale.z);
         Tile.SetActive(true);
     }
 
-    private IEnumerator FadeOut(){
+    private IEnumerator FadeOut()
+    {
         while (true){
             if(transform.localScale.y < 0){
                 Tile.SetActive(false);
@@ -43,7 +48,8 @@ public class FadePanel : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeIn(){
+    private IEnumerator FadeIn()
+    {
         Tile.SetActive(true);
         while (true){
             if(transform.localScale.y > 1){

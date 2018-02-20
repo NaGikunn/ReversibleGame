@@ -127,7 +127,16 @@ public class SceneLoad : MonoBehaviour
             SquarePos[Rand_H, Rand_V] = Num;
             Num++;
         }
-
-        StartCoroutine(FadeOut());
+    }
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.X))
+        {
+            StartCoroutine(FadeIn());
+        }
+        if(Input.GetKey(KeyCode.Z))
+        {
+            StartCoroutine(FadeOut());
+        }
     }
 }
