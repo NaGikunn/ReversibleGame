@@ -28,12 +28,6 @@ public class FadePanel : MonoBehaviour
             StartCoroutine(FadeOut());
     }
 
-    public void Reset()
-    {
-        Tile.transform.localScale = new Vector3(Tile.transform.localScale.x,1,Tile.transform.localScale.z);
-        Tile.SetActive(true);
-    }
-
     private IEnumerator FadeOut()
     {
         while (true){
@@ -52,7 +46,7 @@ public class FadePanel : MonoBehaviour
     {
         Tile.SetActive(true);
         while (true){
-            if(transform.localScale.y > 1){
+            if(transform.localScale.y >= 1){
                 SL.FadeEndTiles++;
                 break;
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SceneLoad : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class SceneLoad : MonoBehaviour
     public Image[] Tiles;
     private Image[,] Squares;
 
-    //private GameManager GameManager;
+    // 次のシーン名
+    public string nextSceneName;
 
     //FadeOut
     public IEnumerator FadeOut()
@@ -87,9 +89,10 @@ public class SceneLoad : MonoBehaviour
                 Debug.Log("fade end");
                 IsFadeIn = false;
                 FadeEndTiles = 0;
+                yield return new WaitForSeconds(1.0f);
+                SceneManager.LoadScene(nextSceneName);   // 次のシーンへ
                 break;
             }
-
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }
@@ -127,16 +130,16 @@ public class SceneLoad : MonoBehaviour
             SquarePos[Rand_H, Rand_V] = Num;
             Num++;
         }
+
     }
-    void Update()
+
+    public void CorIn()
     {
-        if(Input.GetKey(KeyCode.X))
-        {
-            StartCoroutine(FadeIn());
-        }
-        if(Input.GetKey(KeyCode.Z))
-        {
-            StartCoroutine(FadeOut());
-        }
+        StartCoroutine(FadeIn());
+    }
+
+    public void CorOut()
+    {
+        StartCoroutine(FadeOut());
     }
 }
