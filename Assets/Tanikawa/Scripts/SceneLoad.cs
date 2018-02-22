@@ -18,7 +18,7 @@ public class SceneLoad : MonoBehaviour
     public bool IsFadeOut = false;
 
     //消滅間隔
-    private float FadeInterval = 0.1f;
+    private float FadeInterval = 1.0f;
 
     //Tile
     public Image[] Tiles;
@@ -26,7 +26,9 @@ public class SceneLoad : MonoBehaviour
 
     // 次のシーン名
     public string nextSceneName;
-
+    void Update()
+    {
+    }
     //FadeOut
     public IEnumerator FadeOut()
     {
@@ -39,6 +41,7 @@ public class SceneLoad : MonoBehaviour
             {
                 for (int j = 0; j < SquareCount_V; j++)
                 {
+                    Debug.Log(FadeCount);
                     if (SquarePos[i, j] == FadeCount)
                     {
                         Squares[i, j].GetComponent<FadePanel>().FadeOutStart();
@@ -86,7 +89,6 @@ public class SceneLoad : MonoBehaviour
         {
             if (FadeEndTiles >= SquareCount_H * SquareCount_V)
             {
-                Debug.Log("fade end");
                 IsFadeIn = false;
                 FadeEndTiles = 0;
                 yield return new WaitForSeconds(1.0f);

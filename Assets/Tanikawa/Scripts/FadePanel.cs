@@ -16,6 +16,8 @@ public class FadePanel : MonoBehaviour
     {
         Tile = gameObject;
         SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
+
+        Vector3 Scale = Vector3.zero;
     }
 
     public void FadeInStart()
@@ -31,7 +33,7 @@ public class FadePanel : MonoBehaviour
     private IEnumerator FadeOut()
     {
         while (true){
-            if(transform.localScale.y < 0){
+            if(transform.localScale.y <= 0){
                 Tile.SetActive(false);
                 SL.FadeEndTiles++;
                 break;
