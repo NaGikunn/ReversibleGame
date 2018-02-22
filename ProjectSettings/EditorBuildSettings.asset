@@ -4,4 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Tanikawa/Title.unity
+    guid: 5818f04e4b6bbaa45a2bb380971f9ef1
+  - enabled: 1
+    path: Assets/Tanikawa/Loading.unity
+    guid: 9ca75358c30691e46a82bf61e2a06e98
+  - enabled: 1
+    path: Assets/Tanikawa/Back.unity
+    guid: 984cde11eb289a742a0dad33822313aa
