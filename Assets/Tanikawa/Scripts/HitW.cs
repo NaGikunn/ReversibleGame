@@ -11,7 +11,7 @@ public class HitW : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        Vector3 StartPos = new Vector3(0.0f, 0.75f, 0.0f);
+        Vector3 StartPos = new Vector3(0.0f, 0.9f, 0.0f);
 
 		white= (GameObject)Resources.Load("Prefab/WhiteHit");
 
@@ -20,10 +20,6 @@ public class HitW : MonoBehaviour
         OnHit =true;
     }
 
-    public void Effecter()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update ()
