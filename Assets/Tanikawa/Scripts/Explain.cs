@@ -13,9 +13,9 @@ public class Explain : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Back");
+            SceneManager.LoadScene("3DAction");
         }
     }
 }

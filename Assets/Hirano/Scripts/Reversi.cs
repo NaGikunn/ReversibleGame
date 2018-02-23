@@ -14,9 +14,13 @@ public class Reversi : MonoBehaviour
 
 	public int[,] Board = new int[4,4];
 
+	public SceneLoad LoadScript;
+
 	// Use this for initialization
 	void Start ()
 	{
+		LoadScript.ColOut();
+
 		for(int i = 0; i <= Panels.Length; i++)
 		{
 			if(i <= 4||i >=10)
@@ -31,13 +35,16 @@ public class Reversi : MonoBehaviour
 
 		foreach(GameObject name in Panels)
 		{
-			Debug.Log(name);
+			//Debug.Log(name);
 		}
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			LoadScript.ColIn();
+		}
 	}
 }

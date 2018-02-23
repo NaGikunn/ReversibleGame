@@ -10,7 +10,7 @@ public class TitleFade : MonoBehaviour
 
     void Start()
     {
-        LoadManeger.SendMessage("CorOut");
+        LoadManeger.SendMessage("ColOut");
     }
 
 
@@ -22,7 +22,7 @@ public class TitleFade : MonoBehaviour
             InsInFlg = true;
             if (InsInFlg == true)
             {
-                LoadManeger.SendMessage("CorIn");
+                LoadManeger.SendMessage("ColIn");
                 InsInFlg = false;
             }
         }

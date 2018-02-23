@@ -98,7 +98,7 @@ public class SceneLoad : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         //配列宣言
         Squares = new Image[SquareCount_H, SquareCount_V];
@@ -134,12 +134,12 @@ public class SceneLoad : MonoBehaviour
 
     }
 
-    public void CorIn()
+    public void ColIn()
     {
         StartCoroutine(FadeIn());
     }
 
-    public void CorOut()
+    public void ColOut()
     {
         StartCoroutine(FadeOut());
     }
