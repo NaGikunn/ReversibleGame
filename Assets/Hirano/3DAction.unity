@@ -435,7 +435,7 @@ Prefab:
     - target: {fileID: 224384649732438290, guid: 144c147ba284eb1448e85a33ea28ed24,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224384649732438290, guid: 144c147ba284eb1448e85a33ea28ed24,
         type: 2}
@@ -475,7 +475,7 @@ Prefab:
     - target: {fileID: 224384649732438290, guid: 144c147ba284eb1448e85a33ea28ed24,
         type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 224384649732438290, guid: 144c147ba284eb1448e85a33ea28ed24,
         type: 2}
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollFrame: 10
-  PaintMat: {fileID: 2100000, guid: 7b49e2df38d70c74896df8822a4e12cc, type: 2}
+  AsiatoMat: {fileID: 1935934677156550, guid: 031d59145dc0261418480abaf402e6c9, type: 2}
 --- !u!4 &1327693977
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollFrame: 10
-  PaintMat: {fileID: 2100000, guid: 62d6a0d029bb3734b95a09f3b70e39db, type: 2}
+  AsiatoMat: {fileID: 1824316613281444, guid: da2a2520c962bb244b02d4239275273e, type: 2}
 --- !u!4 &1492132480
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,7 +1426,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4194824297052366, guid: 2f3ad934ba0b47c4fbda7425c9e8e301, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f3ad934ba0b47c4fbda7425c9e8e301, type: 2}
