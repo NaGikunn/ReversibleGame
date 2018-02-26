@@ -19,15 +19,25 @@ public class SceneLoad : MonoBehaviour
 
     //消滅間隔
     private float FadeInterval = 0.1f;
-
+    
+    // 現在のシーン名
+    private string SceneName;
+    //次のシーン
+    public string NextSceneName;
     //Tile
     public Image[] Tiles;
     private Image[,] Squares;
 
-    // 次のシーン名
-    public string nextSceneName;
+    //Fade待ち時間
+    float LoadInterval = 0.0f;
+    void Start()
+    {
+        LoadInterval = 1.0f;
+        SceneName = SceneManager.GetActiveScene().name;
+    }
     void Update()
     {
+        
     }
     //FadeOut
     public IEnumerator FadeOut()
@@ -90,8 +100,16 @@ public class SceneLoad : MonoBehaviour
             {
                 IsFadeIn = false;
                 FadeEndTiles = 0;
-                yield return new WaitForSeconds(1.0f);
-                SceneManager.LoadScene(nextSceneName);   // 次のシーンへ
+                if(SceneName == "Back")
+                {
+                    LoadInterval = 5.0f;
+                }
+                else
+                {
+                    LoadInterval = 1.0f;
+                }
+                yield return new WaitForSeconds(LoadInterval);
+                SceneManager.LoadScene(NextSceneName);   // 次のシーンへ
                 break;
             }
             yield return new WaitForSeconds(Time.deltaTime);

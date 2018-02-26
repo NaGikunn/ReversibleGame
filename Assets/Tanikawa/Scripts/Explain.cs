@@ -15,7 +15,7 @@ public class Explain : MonoBehaviour {
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("3DAction");
+            SceneManager.LoadScene("Back");
         }
     }
 }
