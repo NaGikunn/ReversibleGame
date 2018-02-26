@@ -8,11 +8,14 @@ public class CameraControl : MonoBehaviour
 
 	private Vector3 offset = Vector3.zero;
 
-	public string TargetName;
+	public string TargetTagName;
+
+	public GameObject RightPosition;
+	public GameObject LeftPosition;
 	// Use this for initialization
 	void Start ()
 	{
-		player = GameObject.FindGameObjectWithTag(TargetName);
+		player = GameObject.FindGameObjectWithTag(TargetTagName);
 		offset = transform.position - player.transform.position;
 	}
 	

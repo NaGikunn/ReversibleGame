@@ -15,11 +15,13 @@ public class PlayerMove : MonoBehaviour
 	public GameObject AsiatoMat;
 	//プレイヤーの位置
 	private Vector3 PlayerPos;
+	//プレイヤーがサイドから戻るときの高さ
+	public float SideEndPos;
 	//どの状態にいるか
-	private bool isFront = false;
-	private bool isBack = false;
-	private bool isRight = false;
-	private bool isLeft = false;
+	public static  bool isFront = false;
+	public static bool isBack = false;
+	public static bool isRight = false;
+	public static bool isLeft = false;
 	// Use this for initialization
 	void Start()
 	{
@@ -315,11 +317,12 @@ public class PlayerMove : MonoBehaviour
 				transform.position = PlayerPos;
 				isFront = true;
 			}
-			else if(PlayerPos.z >= 2.5f && !isBack)//Backにきたら
+			else if(PlayerPos.z >= 2.5f)//Backにきたら
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isBack = true;
+				Debug.Log("back");
 			}
 			else if(PlayerPos.x >= 3.0f)
 			{
@@ -327,7 +330,7 @@ public class PlayerMove : MonoBehaviour
 				transform.position = PlayerPos;
 				isRight = true;
 			}
-			else if (PlayerPos.x <= -3.0f)
+			else if (PlayerPos.x <= -2.5f)
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
@@ -335,28 +338,28 @@ public class PlayerMove : MonoBehaviour
 			}
 		}
 		//SideにいてSideの1を超えたら
-		if(isFront && PlayerPos.y >= 1.0f)
+		if(isFront && PlayerPos.y >= SideEndPos)
 		{
 			isFront = false;
 			PlayerPos.z += 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isBack && PlayerPos.y >= 1.0f)
+		if(isBack && PlayerPos.y >= SideEndPos)
 		{
 			isBack = false;
 			PlayerPos.z -= 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isRight && PlayerPos.y >= 1.0f)
+		if(isRight && PlayerPos.y >= SideEndPos)
 		{
 			isRight = false;
 			PlayerPos.x -= 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isLeft && PlayerPos.y >= 1.0f)
+		if(isLeft && PlayerPos.y >= SideEndPos)
 		{
 			isLeft = false;
 			PlayerPos.x += 1.0f;

@@ -45,6 +45,7 @@ public class Reversi : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			LoadScript.ColIn();
+			Debug.Log("oshita");
 		}
 	}
 }
