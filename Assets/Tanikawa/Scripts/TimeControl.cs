@@ -7,14 +7,17 @@ public class TimeControl : MonoBehaviour
 {
     public GameObject LoadManeger;
 
+    public Image endImage;
+
     public Text FirstTimeLabel;        // 最初の10秒（ポイント取り合い）
     public Text SecondTimeLabel;      // 本番の60秒（キューブが回り始める）
 
     float FirstTime;
     float SecondTime;
 
-    public static bool gameFlg;　　　　// ゲームシーンの状態
     public static bool secondtimeFlg;　// 本番のTimeを作動させるためのもの
+
+    float speed = 6.0f; //EndImageのスピード
 
     // Use this for initialization
     void Start()
@@ -23,8 +26,8 @@ public class TimeControl : MonoBehaviour
 
         secondtimeFlg = false; // 最初の10秒が終わるまで
 
-        FirstTime = 6.0f;  // 残り時間(表示時にintでキャストするため、初期値をFirstTime+1に)
-        SecondTime = 6.0f; // 残り時間(表示時にintでキャストするため、初期値をSecondTime+1に)
+        FirstTime = 2.0f;  // 残り時間(表示時にintでキャストするため、初期値をFirstTime+1に)
+        SecondTime = 61.0f; // 残り時間(表示時にintでキャストするため、初期値をSecondTime+1に)
 
         // 本番用Timeはじめは非表示
         SecondTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
@@ -34,7 +37,7 @@ public class TimeControl : MonoBehaviour
     {
         Invoke("First", 4.0f);
 
-        // 本番用Time
+        // 本番用Time開始
         if(FirstTime==0.0f)
         {
             secondtimeFlg = true;
@@ -44,6 +47,8 @@ public class TimeControl : MonoBehaviour
         // 本番用Time終了時
         if (SecondTime == 0.0f)
         {
+            endImage.transform.Translate(0, -1 * speed, 0);
+                    
             LoadManeger.SendMessage("ColIn");
             return;
         }

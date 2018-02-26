@@ -28,6 +28,9 @@ public class SceneLoad : MonoBehaviour
     public Image[] Tiles;
     private Image[,] Squares;
 
+    public Image ResImage;
+
+    float Speed = 6.0f;
     //Fade待ち時間
     float LoadInterval = 0.0f;
     void Start()
@@ -102,7 +105,8 @@ public class SceneLoad : MonoBehaviour
                 FadeEndTiles = 0;
                 if(SceneName == "Back")
                 {
-                    LoadInterval = 5.0f;
+                    LoadInterval = 6.0f;
+                    ResImage.transform.Translate(-1 * Speed, 0, 0);
                 }
                 else
                 {
