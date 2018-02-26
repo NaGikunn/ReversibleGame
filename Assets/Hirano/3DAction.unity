@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollFrame: 10
-  PaintMat: {fileID: 2100000, guid: 7b49e2df38d70c74896df8822a4e12cc, type: 2}
+  PaintMat: {fileID: 2100000, guid: 62d6a0d029bb3734b95a09f3b70e39db, type: 2}
 --- !u!4 &1327693977
 Transform:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollFrame: 10
-  PaintMat: {fileID: 2100000, guid: 62d6a0d029bb3734b95a09f3b70e39db, type: 2}
+  PaintMat: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!4 &1492132480
 Transform:
   m_ObjectHideFlags: 0
