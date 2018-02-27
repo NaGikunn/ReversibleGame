@@ -5,19 +5,15 @@ using UnityEngine.UI;
 
 public class TimeControl : MonoBehaviour
 {
-    public GameObject LoadManeger;
+    public GameObject LoadManeger; //LoadManegerを設定する
 
-    public Image endImage;
+    public Text FirstTimeLabel;   // 最初用TimeText
+    public Text SecondTimeLabel;  // 本番用TimeText
 
-    public Text FirstTimeLabel;        // 最初の10秒（ポイント取り合い）
-    public Text SecondTimeLabel;      // 本番の60秒（キューブが回り始める）
+    float FirstTime;　　// 最初の10秒（ポイント取り合い）
+    float SecondTime;　 // 本番の60秒（キューブが回り始める）
 
-    float FirstTime;
-    float SecondTime;
-
-    public static bool secondtimeFlg;　// 本番のTimeを作動させるためのもの
-
-    float speed = 6.0f; //EndImageのスピード
+    public static bool secondtimeFlg;　// 本番のTimeを作動させるためflg
 
     // Use this for initialization
     void Start()
@@ -26,7 +22,7 @@ public class TimeControl : MonoBehaviour
 
         secondtimeFlg = false; // 最初の10秒が終わるまで
 
-        FirstTime = 2.0f;  // 残り時間(表示時にintでキャストするため、初期値をFirstTime+1に)
+        FirstTime = 11.0f;  // 残り時間(表示時にintでキャストするため、初期値をFirstTime+1に)
         SecondTime = 61.0f; // 残り時間(表示時にintでキャストするため、初期値をSecondTime+1に)
 
         // 本番用Timeはじめは非表示
@@ -35,7 +31,7 @@ public class TimeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Invoke("First", 4.0f);
+        Invoke("First", 15.0f); //最初用Time遅延
 
         // 本番用Time開始
         if(FirstTime==0.0f)
@@ -46,24 +42,23 @@ public class TimeControl : MonoBehaviour
 
         // 本番用Time終了時
         if (SecondTime == 0.0f)
-        {
-            endImage.transform.Translate(0, -1 * speed, 0);
-                    
+        {           
             LoadManeger.SendMessage("ColIn");
             return;
         }
 
         // 残り時間を2桁で表示
-        FirstTimeLabel.text = string.Format("{0:0}", (int)FirstTime);
-        SecondTimeLabel.text = string.Format("{0:0}", (int)SecondTime);
+        FirstTimeLabel.text = string.Format("{0:00}", (int)FirstTime);
+        SecondTimeLabel.text = string.Format("{0:00}", (int)SecondTime);
     }
+    // 最初用Time
     public void First()
     {
         FirstTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
         FirstTime = Mathf.Max(FirstTime, 0.0f);   // マイナス時間にならないように
     }
 
-    // RamdomRote呼び出す
+    // 本番用Time
     public void Second()
     {
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示

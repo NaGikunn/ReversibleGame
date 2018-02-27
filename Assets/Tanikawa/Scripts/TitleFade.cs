@@ -17,7 +17,7 @@ public class TitleFade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             InsInFlg = true;
             if (InsInFlg == true)
