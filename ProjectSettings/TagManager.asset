@@ -8,6 +8,7 @@ TagManager:
   - Player1
   - Player2
   - Panel
+  - CountPanel
   layers:
   - Default
   - TransparentFX
