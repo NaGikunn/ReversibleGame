@@ -11,17 +11,17 @@ public class PlayerMove : MonoBehaviour
 	private PlayerState State;
 	//自分の名前
 	private string MyName;
+	//塗る色のMaterial
+	public Material PaintMat;
 	//足跡
-	public GameObject AsiatoMat;
+	public GameObject Footprint;
 	//プレイヤーの位置
 	private Vector3 PlayerPos;
-	//プレイヤーがサイドから戻るときの高さ
-	public float SideEndPos;
 	//どの状態にいるか
-	public static  bool isFront = false;
-	public static bool isBack = false;
-	public static bool isRight = false;
-	public static bool isLeft = false;
+	private bool isFront = false;
+	private bool isBack = false;
+	private bool isRight = false;
+	private bool isLeft = false;
 	// Use this for initialization
 	void Start()
 	{
@@ -60,7 +60,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.up,
 						   new Vector3(90, 0, 0)));
-						Asiat(0,0);
+						Asiat(0, 0);
 					}
 					else if(isBack)
 					{
@@ -68,7 +68,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.down,
 						   new Vector3(-90, 0, 0)));
-						Asiat(180,0);
+						Asiat(180, 0);
 					}
 					else if (isRight)
 					{
@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.forward,
 							new Vector3(0, -90, 0)));
-						Asiat(0,90);
+						Asiat(0, 90);
 					}
 					else if (isLeft)
 					{
@@ -84,7 +84,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.forward,
 							new Vector3(0, 90, 0)));
-						Asiat(0,-90);
+						Asiat(0, -90);
 					}
 					else
 					{
@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.forward,
 						   new Vector3(90, 0, 0)));
-						Asiat(90,0);
+						Asiat(90, 0);
 					}
 					break;
 				case PlayerState.Down:
@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.down,
 						   new Vector3(-90, 0, 0)));
-						Asiat(0,0);
+						Asiat(0, 0);
 					}
 					else if (isBack)
 					{
@@ -110,7 +110,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.up,
 						   new Vector3(90, 0, 0)));
-						Asiat(180,0);
+						Asiat(180, 0);
 					}
 					else if (isRight)
 					{
@@ -118,7 +118,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.back,
 							new Vector3(0, 90, 0)));
-						Asiat(0,-90);
+						Asiat(0, -90);
 					}
 					else if (isLeft)
 					{
@@ -126,7 +126,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.back,
 							new Vector3(0, -90, 0)));
-						Asiat(0,90);
+						Asiat(0, 90);
 					}
 					else
 					{
@@ -134,7 +134,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.back,
 							new Vector3(-90, 0, 0)));
-						Asiat(90,0);
+						Asiat(90, 0);
 					}
 					break;
 				case PlayerState.Right:
@@ -144,7 +144,7 @@ public class PlayerMove : MonoBehaviour
 						    transform.position,
 						    transform.position + Vector3.right,
 						    new Vector3(0, -90, 0)));
-						Asiat(0,0);
+						Asiat(0, 0);
 					}
 					else if (isRight)
 					{
@@ -152,7 +152,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.down,
 						   new Vector3(0, 0, -90)));
-						Asiat(0,90);
+						Asiat(0, 90);
 					}
 					else if (isLeft)
 					{
@@ -160,7 +160,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.up,
 							new Vector3(0, 0, -90)));
-						Asiat(0,-90);
+						Asiat(0, -90);
 					}
 					else
 					{
@@ -168,7 +168,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.right,
 							new Vector3(0, 0, -90)));
-						Asiat(90,0);
+						Asiat(90, 0);
 					}
 					break;
 				case PlayerState.Left:
@@ -178,7 +178,7 @@ public class PlayerMove : MonoBehaviour
 						    transform.position,
 						    transform.position + Vector3.left,
 						    new Vector3(0, 90, 0)));
-						Asiat(0,0);
+						Asiat(0, 0);
 					}
 					else if (isRight)
 					{
@@ -186,7 +186,7 @@ public class PlayerMove : MonoBehaviour
 						   transform.position,
 						   transform.position + Vector3.up,
 						   new Vector3(0, 0, 90)));
-						Asiat(0,90);
+						Asiat(0, 90);
 					}
 					else if (isLeft)
 					{
@@ -194,7 +194,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.down,
 							new Vector3(0, 0, 90)));
-						Asiat(0,-90);
+						Asiat(0, -90);
 					}
 					else
 					{
@@ -202,7 +202,7 @@ public class PlayerMove : MonoBehaviour
 							transform.position,
 							transform.position + Vector3.left,
 							new Vector3(0, 0, 90)));
-						Asiat(90,0);
+						Asiat(90, 0);
 					}
 					break;
 			}
@@ -305,11 +305,12 @@ public class PlayerMove : MonoBehaviour
 			//Panelに当たったら
 			if (hit.collider.gameObject.CompareTag("Panel"))
 			{
-				//GameObject obj;
-				////Panelに足跡をつける
-				//obj = Instantiate(AsiatoMat,new Vector3(0,0.6f,0),Quaternion.Euler(90,0,0));
-				//obj.transform.position = gameObject.transform.position;
-				//Destroy(obj, 0.5f);
+				
+			}
+			else if (hit.collider.gameObject.CompareTag("CountPanel"))
+			{
+				//PanelのMaterialを変更
+				hit.collider.gameObject.GetComponent<Renderer>().material = PaintMat;
 			}
 			else if(PlayerPos.z <= -2.5f)//Frontにきたら
 			{
@@ -317,20 +318,19 @@ public class PlayerMove : MonoBehaviour
 				transform.position = PlayerPos;
 				isFront = true;
 			}
-			else if(PlayerPos.z >= 2.5f)//Backにきたら
+			else if(PlayerPos.z >= 2.5f && !isBack)//Backにきたら
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isBack = true;
-				Debug.Log("back");
 			}
-			else if(PlayerPos.x >= 3.0f)
+			else if(PlayerPos.x >= 2.5f)
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isRight = true;
 			}
-			else if (PlayerPos.x <= -2.5f)
+			else if (PlayerPos.x <= -3.0f)
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
@@ -338,28 +338,28 @@ public class PlayerMove : MonoBehaviour
 			}
 		}
 		//SideにいてSideの1を超えたら
-		if(isFront && PlayerPos.y >= SideEndPos)
+		if(isFront && PlayerPos.y >= 1.0f)
 		{
 			isFront = false;
 			PlayerPos.z += 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isBack && PlayerPos.y >= SideEndPos)
+		if(isBack && PlayerPos.y >= 1.0f)
 		{
 			isBack = false;
 			PlayerPos.z -= 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isRight && PlayerPos.y >= SideEndPos)
+		if(isRight && PlayerPos.y >= 1.0f)
 		{
 			isRight = false;
 			PlayerPos.x -= 1.0f;
 			transform.position = PlayerPos;
 		}
 
-		if(isLeft && PlayerPos.y >= SideEndPos)
+		if(isLeft && PlayerPos.y >= 1.0f)
 		{
 			isLeft = false;
 			PlayerPos.x += 1.0f;
@@ -367,7 +367,7 @@ public class PlayerMove : MonoBehaviour
 		}
 	}
 
-	public void Asiat(float Rx,float Ry)
+	public void Asiat(float Rx, float Ry)
 	{
 		GameObject obj;
 		PlayerPos = transform.position;
@@ -375,7 +375,7 @@ public class PlayerMove : MonoBehaviour
 		float y = PlayerPos.y;
 		float z = PlayerPos.z;
 		//Panelに足跡をつける
-		obj = Instantiate(AsiatoMat, new Vector3(x, y-0.4f, z), Quaternion.Euler(Rx, Ry, 0));
+		obj = Instantiate(Footprint, new Vector3(x, y - 0.4f, z), Quaternion.Euler(Rx, Ry, 0));
 		Destroy(obj, 0.5f);
 	}
 }
