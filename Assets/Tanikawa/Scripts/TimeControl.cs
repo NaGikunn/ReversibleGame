@@ -31,6 +31,8 @@ public class TimeControl : MonoBehaviour
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
         SecondTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
     }
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -42,12 +44,14 @@ public class TimeControl : MonoBehaviour
 
             FirstTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             FirstTime = Mathf.Max(FirstTime, 0.0f);   // マイナス時間にならないように
+
+            if (FirstTime == 0.0f)
+            {
+                FirstExit();
+            }
         }
 
-       if (FirstTime==0.0f)
-        {
-            FirstExit();
-        }
+       
 
        if(secondTimeflg==true)
         {
@@ -71,19 +75,20 @@ public class TimeControl : MonoBehaviour
     public void First()
     {
         firstTimeflg = true;
+        Debug.Log("First");
     }
 
     public void FirstExit()
     {
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
         Invoke("Second", 5.0f);
-        Debug.Log("Second");
     }
 
     // 本番用Time
     public void Second()
     {
         secondTimeflg = true;
+        Debug.Log("Second");
     }
 }
 
