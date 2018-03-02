@@ -7,11 +7,15 @@ public class Explain : MonoBehaviour
 {
     Transform ExplainManeger;
 
-    float Scrollx; //ページごとの移動距離（ここにscrMaxを入れるとページが変わる）
-    float scrMax = 15.0f; //加算数値の最大値
+    public float Scrollx; //現在のページ数（0=1ページ目、-15=2ページ目）
+    float scrMax = 15.0f;
+    float scrMin = -15.0f;
+    public float scrNext;
 
     bool plasScrollflg;
     bool minusScrollflg;
+
+    Animator animator;
 
     // Use this for initialization
     void Start()
@@ -19,53 +23,39 @@ public class Explain : MonoBehaviour
         plasScrollflg = false;
         minusScrollflg = false;
 
-        Scrollx = 0.0f;
-        ExplainManeger = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Scrollx, 1, 0);
-
+        //左に動かす
         if (Input.GetKeyDown(KeyCode.A))
         {
-            minusScrollflg = true;
-        }
-
-        if (minusScrollflg == true)
-        {
-            if (Scrollx > -scrMax)
-            {
-                Scrollx--;
-            }
-            else if (Scrollx == -scrMax)
-            {
-                scrMax = scrMax + 15.0f;
-                minusScrollflg = false;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
+            animator.SetBool("Next2", true);
+            animator.SetBool("Back1", false);
             plasScrollflg = true;
         }
 
-        if(plasScrollflg == true)
+
+       
+
+        //右に動かす
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            if(Scrollx>scrMax)
-            {
-                Scrollx++;
-            }
-            else if(Scrollx==scrMax)
-            {
-                scrMax = scrMax + 15.0f;
-                plasScrollflg = false;
-            }
+            animator.SetBool("Back1", true);
+            animator.SetBool("Next2", false);
+            minusScrollflg = true;
         }
+      
+
+       
 
 
-        if (Scrollx==60.0f)
+        if (Scrollx==-60.0f)
         {
+            //scrNext = -45.0f;
             Debug.Log("LastExp");
 
            if(Input.GetKeyDown(KeyCode.Space))
@@ -73,8 +63,9 @@ public class Explain : MonoBehaviour
                 SceneManager.LoadScene("Back");
             }
         }
+      
 
-        ExplainManeger.position = new Vector3(Mathf.Clamp(Scrollx, -60, 0), 1,0);
+        //ExplainManeger.position = new Vector3(Mathf.Clamp(Scrollx, -60, 0), 1,0);
 
             //二つの間の値にする
             //Transform ExplainManeger;
