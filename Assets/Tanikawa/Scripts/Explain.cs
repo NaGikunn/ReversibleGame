@@ -15,6 +15,7 @@ public class Explain : MonoBehaviour
     bool plasScrollflg;
     bool minusScrollflg;
 
+    public int count = 0;
     Animator animator;
 
     // Use this for initialization
@@ -24,82 +25,103 @@ public class Explain : MonoBehaviour
         minusScrollflg = false;
 
         animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        //左に動かす
-        if (Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A))
         {
-            animator.SetBool("Next2", true);
-            animator.SetBool("Back1", false);
             plasScrollflg = true;
+
+            if (plasScrollflg == true)
+            {
+                count += 1;
+                leftScr();
+            }
         }
 
-
-       
-
-        //右に動かす
         if (Input.GetKeyDown(KeyCode.D))
         {
-            animator.SetBool("Back1", true);
-            animator.SetBool("Next2", false);
-            minusScrollflg = true;
+           minusScrollflg = true;
+
+            if (minusScrollflg == true&&count>0)
+            {
+                count -= 1;
+                RightScr();
+            }
         }
-      
 
-       
-
-
-        if (Scrollx==-60.0f)
+        if (count == 4)
         {
-            //scrNext = -45.0f;
             Debug.Log("LastExp");
 
-           if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene("Back");
             }
         }
-      
-
-        //ExplainManeger.position = new Vector3(Mathf.Clamp(Scrollx, -60, 0), 1,0);
-
-            //二つの間の値にする
-            //Transform ExplainManeger;
-            //float downPos;
-            //float touchPos;
-            //// Use this for initialization
-            //void Start()
-            //{
-            //    ExplainManeger = GetComponent<Transform>();
-            //}
-
-            //// Update is called once per frame
-            //void Update()
-            //{
-
-            //    if (Input.GetMouseButton(0))
-            //    {
-            //        touchPos = Input.mousePosition.x;
-            //        //Debug.Log(touchPos);
-            //        if (Input.GetMouseButtonDown(0))
-            //        {
-            //            downPos = Input.mousePosition.x;
-            //        }
-            //    }
-            //    float TouchMove = touchPos - downPos;
-            //    ////Debug.Log(TouchPosition());
-            //    downPos = touchPos;
-            //    //if (IsTouched())
-            //    //{
-
-            //    //    //両方
-            //    float moveX = ExplainManeger.position.x + TouchMove;
-
-            //    ExplainManeger.position = new Vector2(Mathf.Clamp(moveX, -60, 0), 1);//二つの間の値にする
-            //}
+    }
+    void leftScr()
+    {
+        if (count == 1)
+        {
+            animator.SetBool("Next2", true);
+            animator.SetBool("Back1", false);
+            plasScrollflg = false;
+        }
+        if (count == 2)
+        {
+            animator.SetBool("Next3", true);
+            animator.SetBool("Back2", false);
+            animator.SetBool("Next2", false);
+            plasScrollflg = false;
+        }
+        if (count == 3)
+        {
+            animator.SetBool("Next4", true);
+            animator.SetBool("back3", false);
+            animator.SetBool("Next3", false);
+            plasScrollflg = false;
+        }
+        if (count == 4)
+        {
+            animator.SetBool("Next5", true);
+            animator.SetBool("Back4", false);
+            animator.SetBool("Next4", false);
+            plasScrollflg = false;
+        }
+    }
+    void RightScr()
+    {
+        //右に動かす
+        if (count == 0)
+        {
+            animator.SetBool("Back1", true);
+            animator.SetBool("Next2", false);
+            animator.SetBool("Back2", false);
+            plasScrollflg = false;
+        }
+        if (count == 1)
+        {
+            animator.SetBool("Back2", true);
+            animator.SetBool("Next3", false);
+            animator.SetBool("Back3", false);
+            plasScrollflg = false;
+        }
+        if (count == 2)
+        {
+            animator.SetBool("Back3", true);
+            animator.SetBool("Next4", false);
+            animator.SetBool("Back4", false);
+            plasScrollflg = false;
+        }
+        if (count == 3)
+        {
+            animator.SetBool("Back4", true);
+            animator.SetBool("Next5", false);
+            animator.SetBool("Back5", false);
+            plasScrollflg = false;
+        }
     }
 }
