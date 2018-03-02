@@ -17,11 +17,14 @@ public class PlayerMove : MonoBehaviour
 	public GameObject Footprint;
 	//プレイヤーの位置
 	private Vector3 PlayerPos;
-	//どの状態にいるか
+	//ステージのどこにいるか
 	private bool isFront = false;
 	private bool isBack = false;
 	private bool isRight = false;
 	private bool isLeft = false;
+	private bool isDown = false;
+	//CountPanelを踏んでいるか
+	private bool CountHitPanel = false;
 	// Use this for initialization
 	void Start()
 	{
@@ -47,166 +50,183 @@ public class PlayerMove : MonoBehaviour
 		//回ってなければキー入力されない
 		if (!isRolling)
 		{
-			//Switc
+			//Switch
 			switch (State)
 			{
-				case PlayerState.Idol:
-					break;
-				case PlayerState.Up:
-					//Sideにいるかどうか
-					if (isFront)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.up,
-						   new Vector3(90, 0, 0)));
-						Asiat(0, 0);
-					}
-					else if(isBack)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.down,
-						   new Vector3(-90, 0, 0)));
-						Asiat(180, 0);
-					}
-					else if (isRight)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.forward,
-							new Vector3(0, -90, 0)));
-						Asiat(0, 90);
-					}
-					else if (isLeft)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.forward,
-							new Vector3(0, 90, 0)));
-						Asiat(0, -90);
-					}
-					else
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.forward,
-						   new Vector3(90, 0, 0)));
-						Asiat(90, 0);
-					}
-					break;
-				case PlayerState.Down:
-					if (isFront)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.down,
-						   new Vector3(-90, 0, 0)));
-						Asiat(0, 0);
-					}
-					else if (isBack)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.up,
-						   new Vector3(90, 0, 0)));
-						Asiat(180, 0);
-					}
-					else if (isRight)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.back,
-							new Vector3(0, 90, 0)));
-						Asiat(0, -90);
-					}
-					else if (isLeft)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.back,
-							new Vector3(0, -90, 0)));
-						Asiat(0, 90);
-					}
-					else
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.back,
-							new Vector3(-90, 0, 0)));
-						Asiat(90, 0);
-					}
-					break;
-				case PlayerState.Right:
-					if (isFront)
-					{
-						StartCoroutine(PlayerRolling(
-						    transform.position,
-						    transform.position + Vector3.right,
-						    new Vector3(0, -90, 0)));
-						Asiat(0, 0);
-					}
-					else if (isRight)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.down,
-						   new Vector3(0, 0, -90)));
-						Asiat(0, 90);
-					}
-					else if (isLeft)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.up,
-							new Vector3(0, 0, -90)));
-						Asiat(0, -90);
-					}
-					else
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.right,
-							new Vector3(0, 0, -90)));
-						Asiat(90, 0);
-					}
-					break;
-				case PlayerState.Left:
-					if (isFront)
-					{
-						StartCoroutine(PlayerRolling(
-						    transform.position,
-						    transform.position + Vector3.left,
-						    new Vector3(0, 90, 0)));
-						Asiat(0, 0);
-					}
-					else if (isRight)
-					{
-						StartCoroutine(PlayerRolling(
-						   transform.position,
-						   transform.position + Vector3.up,
-						   new Vector3(0, 0, 90)));
-						Asiat(0, 90);
-					}
-					else if (isLeft)
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.down,
-							new Vector3(0, 0, 90)));
-						Asiat(0, -90);
-					}
-					else
-					{
-						StartCoroutine(PlayerRolling(
-							transform.position,
-							transform.position + Vector3.left,
-							new Vector3(0, 0, 90)));
-						Asiat(90, 0);
-					}
-					break;
+				case PlayerState.Idol: return;
+				case PlayerState.Up: RollUp(); return;
+				case PlayerState.Down: RollDown(); return;
+				case PlayerState.Right: RollRight(); return;
+				case PlayerState.Left: RollLeft(); return;
 			}
+		}
+	}
 
+	private void RollUp()
+	{
+		//Sideにいるかどうか
+		if (isFront)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.up,
+			   new Vector3(90, 0, 0)));
+			Asiat(0, 0);
+		}
+		else if (isBack)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.down,
+			   new Vector3(90, 0, 0)));
+			Asiat(180, 0);
+		}
+		else if (isRight)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.forward,
+				new Vector3(0, -90, 0)));
+			Asiat(0, 90);
+		}
+		else if (isLeft)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.forward,
+				new Vector3(0, 90, 0)));
+			Asiat(0, -90);
+		}
+		else if (isDown)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.forward,
+				new Vector3(90, 0, 0)));
+		}
+		else
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.forward,
+			   new Vector3(90, 0, 0)));
+			Asiat(90, 0);
+		}
+	}
+
+	private void RollDown()
+	{
+		if (isFront)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.down,
+			   new Vector3(-90, 0, 0)));
+			Asiat(0, 0);
+		}
+		else if (isBack)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.up,
+			   new Vector3(-90, 0, 0)));
+			Asiat(180, 0);
+		}
+		else if (isRight)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.back,
+				new Vector3(0, 90, 0)));
+			Asiat(0, -90);
+		}
+		else if (isLeft)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.back,
+				new Vector3(0, -90, 0)));
+			Asiat(0, 90);
+		}
+		else
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.back,
+				new Vector3(-90, 0, 0)));
+			Asiat(90, 0);
+		}
+	}
+
+	private void RollLeft()
+	{
+		if (isFront)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.left,
+				new Vector3(0, 90, 0)));
+			Asiat(0, 0);
+		}
+		else if (isRight)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.up,
+			   new Vector3(0, 0, 90)));
+			Asiat(0, 90);
+		}
+		else if (isLeft)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.down,
+				new Vector3(0, 0, 90)));
+			Asiat(0, -90);
+		}
+		else
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.left,
+				new Vector3(0, 0, 90)));
+			Asiat(90, 0);
+		}
+	}
+
+	private void RollRight()
+	{
+		if (isFront)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.right,
+				new Vector3(0, -90, 0)));
+			Asiat(0, 0);
+		}
+		else if (isRight)
+		{
+			StartCoroutine(PlayerRolling(
+			   transform.position,
+			   transform.position + Vector3.down,
+			   new Vector3(0, 0, -90)));
+			Asiat(0, 90);
+		}
+		else if (isLeft)
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.up,
+				new Vector3(0, 0, -90)));
+			Asiat(0, -90);
+		}
+		else
+		{
+			StartCoroutine(PlayerRolling(
+				transform.position,
+				transform.position + Vector3.right,
+				new Vector3(0, 0, -90)));
+			Asiat(90, 0);
 		}
 	}
 
@@ -305,10 +325,11 @@ public class PlayerMove : MonoBehaviour
 			//Panelに当たったら
 			if (hit.collider.gameObject.CompareTag("Panel"))
 			{
-				
+				CountHitPanel = false;
 			}
 			else if (hit.collider.gameObject.CompareTag("CountPanel"))
 			{
+				CountHitPanel = true;
 				//PanelのMaterialを変更
 				hit.collider.gameObject.GetComponent<Renderer>().material = PaintMat;
 			}
@@ -324,17 +345,23 @@ public class PlayerMove : MonoBehaviour
 				transform.position = PlayerPos;
 				isBack = true;
 			}
-			else if(PlayerPos.x >= 2.5f)
+			else if(PlayerPos.x >= 2.5f) //Rightにきたら
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isRight = true;
 			}
-			else if (PlayerPos.x <= -3.0f)
+			else if (PlayerPos.x <= -3.0f) //Leftにきたら
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isLeft = true;
+			}
+			else if(PlayerPos.y <= -4.5f && (isBack || isRight || isLeft))
+			{
+				PlayerPos.z += 1.0f;
+				transform.position = PlayerPos;
+				isDown = true;
 			}
 		}
 		//SideにいてSideの1を超えたら
@@ -369,13 +396,16 @@ public class PlayerMove : MonoBehaviour
 
 	public void Asiat(float Rx, float Ry)
 	{
-		GameObject obj;
-		PlayerPos = transform.position;
-		float x = PlayerPos.x;
-		float y = PlayerPos.y;
-		float z = PlayerPos.z;
-		//Panelに足跡をつける
-		obj = Instantiate(Footprint, new Vector3(x, y - 0.4f, z), Quaternion.Euler(Rx, Ry, 0));
-		Destroy(obj, 0.5f);
+		if (!CountHitPanel)
+		{
+			GameObject obj;
+			PlayerPos = transform.position;
+			float x = PlayerPos.x;
+			float y = PlayerPos.y;
+			float z = PlayerPos.z;
+			//Panelに足跡をつける
+			obj = Instantiate(Footprint, new Vector3(x, y - 0.4f, z), Quaternion.Euler(Rx, Ry, 0));
+			Destroy(obj, 0.5f);
+		}
 	}
 }
