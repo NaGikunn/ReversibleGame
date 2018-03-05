@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224067233366123982}
   - component: {fileID: 222768290424691880}
   - component: {fileID: 114060105393641126}
+  - component: {fileID: 95063277244846652}
   m_Layer: 5
   m_Name: ImageNexSta
   m_TagString: Untagged
@@ -28,6 +29,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95063277244846652
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533417534233760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 450ad42f6d8b0954085051dbf5e56f84, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114060105393641126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,7 +87,7 @@ RectTransform:
   m_GameObject: {fileID: 1533417534233760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 2, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

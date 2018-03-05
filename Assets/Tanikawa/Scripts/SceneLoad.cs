@@ -102,7 +102,7 @@ public class SceneLoad : MonoBehaviour
                 FadeEndTiles = 0;
                 if(SceneName == "Back")
                 {
-                    LoadInterval = 10.0f;
+                    LoadInterval = 5.0f;
                 }
                 else
                 {

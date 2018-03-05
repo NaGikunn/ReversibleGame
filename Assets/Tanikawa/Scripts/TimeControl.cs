@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class TimeControl : MonoBehaviour
 {
-    public GameObject LoadManeger; //LoadManegerを設定する
+    public GameObject LoadManeger2; //LoadManegerを設定する
+    public GameObject TextMaster3;
 
     public Text FirstTimeLabel;   // 最初用TimeText
     public Text SecondTimeLabel;  // 本番用TimeText
@@ -14,12 +15,20 @@ public class TimeControl : MonoBehaviour
     float SecondTime;  // 本番の60秒（キューブが回り始める）
 
     bool firstTimeflg;   //最初のTimeを作動させるためのflg
-    bool secondTimeflg;
+    bool secondTimeflg;  //本番のTimeを作動させるためのflg
+
+    AudioSource Count;
+    AudioSource CountUp;
+    AudioSource ResultDrum;
 
     // Use this for initialization
     void Start()
     {
-        LoadManeger.SendMessage("ColOut");　// 1番最初にフェードアウトを呼び出す
+        StartCoroutine("TimeCoroutine");
+
+        LoadManeger2.GetComponent<SceneLoad>().ColOut();
+
+        TextMaster3 = GameObject.Find("TextMaster3");
 
         firstTimeflg = false;
         secondTimeflg = false;
@@ -30,15 +39,17 @@ public class TimeControl : MonoBehaviour
         // Timeは最初は非表示
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
         SecondTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
+
+        AudioSource[] mainAS = GetComponents<AudioSource>();
+        Count = mainAS[0];
+        CountUp = mainAS[1];
     }
     
     
     // Update is called once per frame
     void Update()
     {
-        Invoke("First", 15.0f);
-
-       if(firstTimeflg==true)
+        if (firstTimeflg==true)
         {
             FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(1.0f);//最初用Timeを表示
 
@@ -47,11 +58,9 @@ public class TimeControl : MonoBehaviour
 
             if (FirstTime == 0.0f)
             {
-                FirstExit();
+                FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
             }
-        }
-
-       
+        } 
 
        if(secondTimeflg==true)
         {
@@ -59,37 +68,70 @@ public class TimeControl : MonoBehaviour
 
             SecondTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             SecondTime = Mathf.Max(SecondTime, 0.0f);   // マイナス時間にならないように
-                                                        // 本番用Time終了時
-            if (SecondTime == 0.0f)
-            {
-                LoadManeger.SendMessage("ColIn");
-                return;
-            }
+
         }
 
         // 残り時間を2桁で表示
         FirstTimeLabel.text = string.Format("{0:00}", (int)FirstTime);
         SecondTimeLabel.text = string.Format("{0:00}", (int)SecondTime);
     }
-    // 最初用Time
-    public void First()
+
+    IEnumerator TimeCoroutine()
     {
+        TextMaster3.GetComponent<TextManeger>().imaStandby();
+        yield return new WaitForSeconds(5.0f);
+
+        TextMaster3.GetComponent<TextManeger>().imaSta();
         firstTimeflg = true;
         Debug.Log("First");
-    }
 
-    public void FirstExit()
-    {
-        FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
-        Invoke("Second", 5.0f);
-    }
+        yield return new WaitForSeconds(11.0f);
+        if(FirstTime==0.0f)
+        {
+            CountUp.PlayOneShot(CountUp.clip);
+        }
 
-    // 本番用Time
-    public void Second()
-    {
+        TextMaster3.GetComponent<TextManeger>().imaNexSta();
+        yield return new WaitForSeconds(2.0f);
+        TextMaster3.GetComponent<TextManeger>().imaStandby();
+
+        yield return new WaitForSeconds(2.0f);
+        TextMaster3.GetComponent<TextManeger>().imaSta();
         secondTimeflg = true;
         Debug.Log("Second");
+        yield return new WaitForSeconds(61.0f);
+        if (SecondTime==0.0f)
+        {
+            CountUp.PlayOneShot(CountUp.clip);
+            TextMaster3.GetComponent<TextManeger>().imaEnd();
+            LoadManeger2.GetComponent<SceneLoad>().ColIn();
+        }
+        yield return new WaitForSeconds(3.0f);
+        TextMaster3.GetComponent<TextManeger>().imaRes();
+        
     }
+
+
+    //// 最初用Time
+    //public void First()
+    //{
+    //    firstTimeflg = true;
+    //    Debug.Log("First");
+    //}
+
+    //public void FirstExit()
+    //{
+    //    CountUp.PlayOneShot(CountUp.clip);
+    //    FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
+    //}
+
+    //// 本番用Time
+    //public void Second()
+    //{
+    //    //TextMaster3.GetComponent<TextManeger>().imaSta();
+    //    secondTimeflg = true;
+    //    Debug.Log("Second");
+    //}
 }
 
    

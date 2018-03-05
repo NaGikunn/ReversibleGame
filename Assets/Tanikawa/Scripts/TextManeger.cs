@@ -25,10 +25,7 @@ public class TextManeger : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            imaRes();
-        }
+       
     }
 
     //よーいImage呼び出し
@@ -36,7 +33,7 @@ public class TextManeger : MonoBehaviour {
     {
         Image ImePre1 = (Image)Instantiate(ImageStandby);
         ImePre1.transform.SetParent(TextMaster3.transform, false);
-        //ImePre3.transform.Translate(1 * Speed, 0, 0);
+        //ImePre1.transform.Translate(1 * Speed, 0, 0);
     }
 
     //始めImage呼び出し
@@ -68,7 +65,7 @@ public class TextManeger : MonoBehaviour {
     {
         Image ImePre5 = (Image)Instantiate(ImageEnd);
         ImePre5.transform.SetParent(TextMaster3.transform, false);
-        //ImePre2.transform.Translate(0, -1 * Speed, 0);
+        ImePre5.transform.Translate(0, -1 * Speed, 0);
     }
 
     //結果発表Image呼び出し

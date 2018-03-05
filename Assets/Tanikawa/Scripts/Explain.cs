@@ -5,18 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Explain : MonoBehaviour
 {
-    Transform ExplainManeger;
+    bool plasScrollflg; //ページを進めるために使うflg
+    bool minusScrollflg;//ページを戻すために使うflg
 
-    public float Scrollx; //現在のページ数（0=1ページ目、-15=2ページ目）
-    float scrMax = 15.0f;
-    float scrMin = -15.0f;
-    public float scrNext;
+    public int count = 0;//増えることで左に、減ることで右に移動する。
 
-    bool plasScrollflg;
-    bool minusScrollflg;
-
-    public int count = 0;
     Animator animator;
+
+    AudioSource LoadFlick;
 
     // Use this for initialization
     void Start()
@@ -25,23 +21,25 @@ public class Explain : MonoBehaviour
         minusScrollflg = false;
 
         animator = GetComponent<Animator>();
+
+        LoadFlick = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             plasScrollflg = true;
 
-            if (plasScrollflg == true)
+            if (plasScrollflg == true&&count<4)
             {
                 count += 1;
                 leftScr();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
            minusScrollflg = true;
 
@@ -62,16 +60,20 @@ public class Explain : MonoBehaviour
             }
         }
     }
+
+    //ページ進む
     void leftScr()
     {
         if (count == 1)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Next2", true);
             animator.SetBool("Back1", false);
             plasScrollflg = false;
         }
         if (count == 2)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Next3", true);
             animator.SetBool("Back2", false);
             animator.SetBool("Next2", false);
@@ -79,6 +81,7 @@ public class Explain : MonoBehaviour
         }
         if (count == 3)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Next4", true);
             animator.SetBool("back3", false);
             animator.SetBool("Next3", false);
@@ -86,17 +89,21 @@ public class Explain : MonoBehaviour
         }
         if (count == 4)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Next5", true);
             animator.SetBool("Back4", false);
             animator.SetBool("Next4", false);
             plasScrollflg = false;
         }
     }
+
+    //ページ戻る
     void RightScr()
     {
-        //右に動かす
         if (count == 0)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
+            count = 0;
             animator.SetBool("Back1", true);
             animator.SetBool("Next2", false);
             animator.SetBool("Back2", false);
@@ -104,6 +111,7 @@ public class Explain : MonoBehaviour
         }
         if (count == 1)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Back2", true);
             animator.SetBool("Next3", false);
             animator.SetBool("Back3", false);
@@ -111,6 +119,7 @@ public class Explain : MonoBehaviour
         }
         if (count == 2)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Back3", true);
             animator.SetBool("Next4", false);
             animator.SetBool("Back4", false);
@@ -118,6 +127,7 @@ public class Explain : MonoBehaviour
         }
         if (count == 3)
         {
+            LoadFlick.PlayOneShot(LoadFlick.clip);
             animator.SetBool("Back4", true);
             animator.SetBool("Next5", false);
             animator.SetBool("Back5", false);

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224771911783374824}
   - component: {fileID: 222929010438636044}
   - component: {fileID: 114157902362114034}
+  - component: {fileID: 95821266779069466}
   m_Layer: 5
   m_Name: ImageSta
   m_TagString: Untagged
@@ -28,6 +29,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95821266779069466
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644655047857204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b762d7b070fb9d459d3d975dfb82c79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114157902362114034
 MonoBehaviour:
   m_ObjectHideFlags: 1
