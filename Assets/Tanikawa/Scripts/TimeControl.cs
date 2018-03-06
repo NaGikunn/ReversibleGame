@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class TimeControl : MonoBehaviour
 {
-    public GameObject LoadManeger2; //LoadManegerを設定する
-    public GameObject TextMaster3;
+    public GameObject LoadManeger2; //LoadManeger2を設定する
+    public GameObject TextMaster3;  //TextMaster3を設定する
 
     public Text FirstTimeLabel;   // 最初用TimeText
     public Text SecondTimeLabel;  // 本番用TimeText
@@ -17,19 +17,22 @@ public class TimeControl : MonoBehaviour
     bool firstTimeflg;   //最初のTimeを作動させるためのflg
     bool secondTimeflg;  //本番のTimeを作動させるためのflg
 
-    AudioSource Count;
-    AudioSource CountUp;
-    AudioSource ResultDrum;
+    AudioSource Count;　　　 //残り10秒になったら鳴る音
+    AudioSource CountUp;　　 //0秒になったらなる音
+    AudioSource ResultDrum;　//リザルトに移動する前になる音
+    AudioSource BGM2;  //メインBGM
+    AudioSource BGM3;　//残り10秒のBGM
 
     // Use this for initialization
     void Start()
     {
+        LoadManeger2.GetComponent<SceneLoad>().ColOut();//最初はフェードアウトから
+
         StartCoroutine("TimeCoroutine");
 
-        LoadManeger2.GetComponent<SceneLoad>().ColOut();
+        TextMaster3 = GameObject.Find("TextMaster3");//TextMaster3を呼び出す
 
-        TextMaster3 = GameObject.Find("TextMaster3");
-
+        // flg最初はfalse
         firstTimeflg = false;
         secondTimeflg = false;
 
@@ -40,35 +43,40 @@ public class TimeControl : MonoBehaviour
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
         SecondTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
 
+        //mainASにサウンドを設定
         AudioSource[] mainAS = GetComponents<AudioSource>();
         Count = mainAS[0];
         CountUp = mainAS[1];
-    }
+        ResultDrum = mainAS[2];
+        BGM2 = mainAS[3];
+        BGM3 = mainAS[4];
+       }
     
     
     // Update is called once per frame
     void Update()
     {
+        // 最初用Time
         if (firstTimeflg==true)
         {
             FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(1.0f);//最初用Timeを表示
 
             FirstTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             FirstTime = Mathf.Max(FirstTime, 0.0f);   // マイナス時間にならないように
+        }
+        // 最初用Time終了時
+        if (FirstTime == 0.0f)
+        {
+            FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
+        }
 
-            if (FirstTime == 0.0f)
-            {
-                FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
-            }
-        } 
-
-       if(secondTimeflg==true)
+        // 本番用Time
+        if (secondTimeflg==true)
         {
             SecondTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(1.0f);// 本番用Timeを表示
 
             SecondTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             SecondTime = Mathf.Max(SecondTime, 0.0f);   // マイナス時間にならないように
-
         }
 
         // 残り時間を2桁で表示
@@ -78,60 +86,69 @@ public class TimeControl : MonoBehaviour
 
     IEnumerator TimeCoroutine()
     {
+        yield return new WaitForSeconds(0.2f);
+        BGM2.Play();
+
+        //移動直後の準備用処理
+        yield return new WaitForSeconds(3.0f);
         TextMaster3.GetComponent<TextManeger>().imaStandby();
         yield return new WaitForSeconds(5.0f);
-
-        TextMaster3.GetComponent<TextManeger>().imaSta();
-        firstTimeflg = true;
-        Debug.Log("First");
-
-        yield return new WaitForSeconds(11.0f);
-        if(FirstTime==0.0f)
-        {
-            CountUp.PlayOneShot(CountUp.clip);
-        }
-
-        TextMaster3.GetComponent<TextManeger>().imaNexSta();
-        yield return new WaitForSeconds(2.0f);
         TextMaster3.GetComponent<TextManeger>().imaStandby();
 
+        // 最初用Time発動
+        yield return new WaitForSeconds(0.2f);
+        TextMaster3.GetComponent<TextManeger>().imaSta();
+        yield return new WaitForSeconds(1.0f);
+        firstTimeflg = true;
+        Debug.Log("First");
+        TextMaster3.GetComponent<TextManeger>().imaSta();
+        yield return new WaitForSeconds(FirstTime);
+
+        // 最初用Time終了時
+        if (FirstTime==0.0f)
+        {
+            FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
+            CountUp.PlayOneShot(CountUp.clip);
+        }
+        TextMaster3.GetComponent<TextManeger>().imaNexSta();
+        yield return new WaitForSeconds(7.0f);
+        TextMaster3.GetComponent<TextManeger>().imaNexSta();
+        yield return new WaitForSeconds(0.2f);
+        TextMaster3.GetComponent<TextManeger>().imaStandby();
+
+        // 本番用Time発動
         yield return new WaitForSeconds(2.0f);
+        TextMaster3.GetComponent<TextManeger>().imaStandby();
+        yield return new WaitForSeconds(0.2f);
+        TextMaster3.GetComponent<TextManeger>().imaSta();
+        yield return new WaitForSeconds(1.0f);
         TextMaster3.GetComponent<TextManeger>().imaSta();
         secondTimeflg = true;
         Debug.Log("Second");
-        yield return new WaitForSeconds(61.0f);
+        yield return new WaitForSeconds(50.0f);
+        BGM2.Stop();
+        yield return new WaitForSeconds(1.0f);
+        BGM3.Play();
+        yield return new WaitForSeconds(SecondTime);
+
+        // 本番用Time終了時
         if (SecondTime==0.0f)
         {
             CountUp.PlayOneShot(CountUp.clip);
             TextMaster3.GetComponent<TextManeger>().imaEnd();
             LoadManeger2.GetComponent<SceneLoad>().ColIn();
+            BGM3.Stop();
         }
+
+        // リザルト移動前の処理
         yield return new WaitForSeconds(3.0f);
+        TextMaster3.GetComponent<TextManeger>().imaEnd();
+        yield return new WaitForSeconds(0.2f);
         TextMaster3.GetComponent<TextManeger>().imaRes();
-        
+        ResultDrum.PlayOneShot(ResultDrum.clip);
+        yield return new WaitForSeconds(8.0f);
+        TextMaster3.GetComponent<TextManeger>().imaRes();
     }
-
-
-    //// 最初用Time
-    //public void First()
-    //{
-    //    firstTimeflg = true;
-    //    Debug.Log("First");
-    //}
-
-    //public void FirstExit()
-    //{
-    //    CountUp.PlayOneShot(CountUp.clip);
-    //    FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);//最初用Timeを非表示
-    //}
-
-    //// 本番用Time
-    //public void Second()
-    //{
-    //    //TextMaster3.GetComponent<TextManeger>().imaSta();
-    //    secondTimeflg = true;
-    //    Debug.Log("Second");
-    //}
 }
 
    
