@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextManeger : MonoBehaviour {
     
-    public GameObject[] ImaTex = new GameObject[6];
+    public GameObject[] ImaTex = new GameObject[10];
 
     public GameObject TextMaster3; //親子関係を結ぶCanvas
 
@@ -20,6 +20,10 @@ public class TextManeger : MonoBehaviour {
         ImaTex[3].SetActive(false);
         ImaTex[4].SetActive(false);
         ImaTex[5].SetActive(false);
+        ImaTex[6].SetActive(true);
+        ImaTex[7].SetActive(true);
+        ImaTex[8].SetActive(false);
+        ImaTex[9].SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -116,5 +120,13 @@ public class TextManeger : MonoBehaviour {
             ImaTex[5].SetActive(false);
             imaCount -= 1;
         }
+    }
+
+    public void playername()
+    {
+        ImaTex[6].SetActive(false);
+        ImaTex[7].SetActive(false);
+        ImaTex[8].SetActive(true);
+        ImaTex[9].SetActive(true);
     }
 }

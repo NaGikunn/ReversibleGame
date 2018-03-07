@@ -7,12 +7,14 @@ public class TimeControl : MonoBehaviour
 {
     public GameObject LoadManeger2; //LoadManeger2を設定する
     public GameObject TextMaster3;  //TextMaster3を設定する
+    public GameObject cCube;　　　　//回転を呼び出すcCubeを設定する
 
     public Text FirstTimeLabel;   // 最初用TimeText
     public Text SecondTimeLabel;  // 本番用TimeText
 
     float FirstTime;　　// 最初の10秒（ポイント取り合い）
     float SecondTime;  // 本番の60秒（キューブが回り始める）
+    float RoteTime;　　//cCubeを呼び出すためのカウント
 
     bool firstTimeflg;   //最初のTimeを作動させるためのflg
     bool secondTimeflg;  //本番のTimeを作動させるためのflg
@@ -38,6 +40,7 @@ public class TimeControl : MonoBehaviour
 
         FirstTime = 11.0f;  // 残り時間(表示時にintでキャストするため、初期値をFirstTime+1に)
         SecondTime = 61.0f; // 残り時間(表示時にintでキャストするため、初期値をSecondTime+1に)
+        RoteTime = 0.0f;
 
         // Timeは最初は非表示
         FirstTimeLabel.GetComponent<CanvasRenderer>().SetAlpha(0.0f);
@@ -77,6 +80,18 @@ public class TimeControl : MonoBehaviour
 
             SecondTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             SecondTime = Mathf.Max(SecondTime, 0.0f);   // マイナス時間にならないように
+
+           if(SecondTime>=9.0f)
+            {
+                RoteTime -= Time.deltaTime;
+                RoteTime = Mathf.Max(RoteTime, 0.0f);
+                if (RoteTime == 0.0f)
+                {
+                    //cCube.GetComponent<StageMake>().RamdomRote();
+                    RoteTime = 10.0f;
+                    Debug.Log("RoteTime");
+                }
+            }
         }
 
         // 残り時間を2桁で表示
@@ -86,7 +101,7 @@ public class TimeControl : MonoBehaviour
 
     IEnumerator TimeCoroutine()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(3.0f);
         BGM2.Play();
 
         //移動直後の準備用処理
@@ -98,6 +113,8 @@ public class TimeControl : MonoBehaviour
         // 最初用Time発動
         yield return new WaitForSeconds(0.2f);
         TextMaster3.GetComponent<TextManeger>().imaSta();
+        yield return new WaitForSeconds(0.2f);
+        TextMaster3.GetComponent<TextManeger>().playername();
         yield return new WaitForSeconds(1.0f);
         firstTimeflg = true;
         Debug.Log("First");
