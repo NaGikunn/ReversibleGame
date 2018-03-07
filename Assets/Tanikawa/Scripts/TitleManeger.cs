@@ -12,6 +12,7 @@ public class TitleManeger : MonoBehaviour {
 
     bool Standbyflg1;
     bool Standbyflg2;
+    bool StandbyOk;
 
     AudioSource standbyAS;
 
@@ -21,33 +22,42 @@ public class TitleManeger : MonoBehaviour {
 
         Standbyflg1 = false;
         Standbyflg2 = false;
+        StandbyOk = true;
 
         standbyAS = GetComponent<AudioSource>();
-       
     }
-
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if(Standbyflg1==false)
         {
-            Standbyflg1 = true;
-            paint1.SetBool("move", true);
-            standbyAS.PlayOneShot(standbyAS.clip);
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                paint1.SetBool("move", true);
+                standbyAS.PlayOneShot(standbyAS.clip);
+                Standbyflg1 = true;
+                Debug.Log("1P_StandBy");
+            }
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        if(Standbyflg2==false)
         {
-            Standbyflg2 = true;
-            paint2.SetBool("Move", true);
-            standbyAS.PlayOneShot(standbyAS.clip);
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                paint2.SetBool("Move", true);
+                standbyAS.PlayOneShot(standbyAS.clip);
+                Standbyflg2 = true;
+                Debug.Log("2P_StandBy");
+            }
         }
-
-        if(Standbyflg1==true&&Standbyflg2==true)
+        if(StandbyOk==true)
         {
-            Invoke("TitleFade", 2.5f);
+            if (Standbyflg1 == true && Standbyflg2 == true)
+            {
+                Invoke("TitleFade", 2.5f);
+                StandbyOk = false;
+            }
         }
-            
     }
 
     public void TitleFade()

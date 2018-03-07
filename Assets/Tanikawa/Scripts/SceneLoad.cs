@@ -32,13 +32,12 @@ public class SceneLoad : MonoBehaviour
     float LoadInterval = 0.0f;
 
     AudioSource Fade1;
-    AudioSource Fade2;
+
     void Start()
     {
         LoadInterval = 1.0f;
         SceneName = SceneManager.GetActiveScene().name;
         Fade1 = GetComponent<AudioSource>();
-        Fade2 = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -160,12 +159,12 @@ public class SceneLoad : MonoBehaviour
     public void ColIn()
     {
         StartCoroutine(FadeIn()); //FadeIn開始
-        Fade2.Play();
+        Fade1.PlayOneShot(Fade1.clip);
+        Debug.Log("Fade1");
     }
 
     public void ColOut()
     {
         StartCoroutine(FadeOut()); //FadeOut開始
-        Fade1.Play();
     }
 }
