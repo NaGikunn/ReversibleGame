@@ -81,7 +81,7 @@ public class TimeControl : MonoBehaviour
             SecondTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             SecondTime = Mathf.Max(SecondTime, 0.0f);   // マイナス時間にならないように
 
-           if(SecondTime>=9.0f)
+            if (SecondTime >= 9.0f)
             {
                 RoteTime -= Time.deltaTime;
                 RoteTime = Mathf.Max(RoteTime, 0.0f);
@@ -115,9 +115,12 @@ public class TimeControl : MonoBehaviour
         TextMaster3.GetComponent<TextManeger>().imaSta();
         yield return new WaitForSeconds(0.2f);
         TextMaster3.GetComponent<TextManeger>().playername();
+        yield return new WaitForSeconds(0.2f);
+        TextMaster3.GetComponent<TextManeger>().PlayerPoint();
         yield return new WaitForSeconds(1.0f);
         firstTimeflg = true;
         Debug.Log("First");
+        yield return new WaitForSeconds(0.1f);
         TextMaster3.GetComponent<TextManeger>().imaSta();
         yield return new WaitForSeconds(FirstTime);
 
@@ -142,7 +145,9 @@ public class TimeControl : MonoBehaviour
         TextMaster3.GetComponent<TextManeger>().imaSta();
         secondTimeflg = true;
         Debug.Log("Second");
-        yield return new WaitForSeconds(50.0f);
+        yield return new WaitForSeconds(30.0f);
+        TextMaster3.GetComponent<TextManeger>().PlayerPoint();
+        yield return new WaitForSeconds(20.0f);
         BGM2.Stop();
         yield return new WaitForSeconds(1.0f);
         BGM3.Play();

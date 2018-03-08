@@ -7,9 +7,12 @@ public class TextManeger : MonoBehaviour {
     
     public GameObject[] ImaTex = new GameObject[10];
 
+    public Animator[] ImaAni = new Animator[2];
+
     public GameObject TextMaster3; //親子関係を結ぶCanvas
 
     int imaCount = 0;
+    int pointCount = 0;
 
     // Use this for initialization
     void Start ()
@@ -126,7 +129,22 @@ public class TextManeger : MonoBehaviour {
     {
         ImaTex[6].SetActive(false);
         ImaTex[7].SetActive(false);
-        ImaTex[8].SetActive(true);
-        ImaTex[9].SetActive(true);
+    }
+
+    public void PlayerPoint()
+    {
+        if (pointCount == 0)
+        {
+            ImaTex[8].SetActive(true);
+            ImaTex[9].SetActive(true);
+            pointCount += 1;
+        }
+        else if (pointCount == 1)
+        {
+            ImaAni[0].SetBool("point", true);
+            ImaAni[1].SetBool("point", true);
+
+            pointCount -= 1;
+        }
     }
 }
