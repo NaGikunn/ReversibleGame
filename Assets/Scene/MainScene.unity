@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadManeger2: {fileID: 862039420}
   TextMaster3: {fileID: 1463801471}
-  cCube: {fileID: 0}
+  cCube: {fileID: 1376109622}
   FirstTimeLabel: {fileID: 1534149755}
   SecondTimeLabel: {fileID: 390663840}
 --- !u!4 &32566471
@@ -10511,6 +10511,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1357816955}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1376109622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1376109624}
+  - component: {fileID: 1376109623}
+  m_Layer: 0
+  m_Name: StageMake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1376109623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376109622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 797cc9a22a2bcfd498460e7c456f20b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bpoint: 0
+  Wpoint: 0
+  BpointContinuation: 0
+  WpointContinuation: 0
+  CenterCube: {fileID: 1858492653328042, guid: f786ff69732b8c94fae1b22ffbc69aa9, type: 2}
+  InsideCube: {fileID: 1628741650957762, guid: 7fd8c92beda54144cb1ab44088fa5ae1, type: 2}
+--- !u!4 &1376109624
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1376109622}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380938080
 GameObject:
   m_ObjectHideFlags: 0

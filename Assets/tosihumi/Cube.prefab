@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114360971884882054}
   m_Layer: 0
   m_Name: UpPlane
-  m_TagString: Panel
+  m_TagString: CountPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,7 +284,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 62bebb8bc5417954fbe158ec415e1305, type: 2}
+  - {fileID: 2100000, guid: f4e9492eebb1b7c44840bd1d5aa13c60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
