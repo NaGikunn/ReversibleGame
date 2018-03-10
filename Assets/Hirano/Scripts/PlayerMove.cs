@@ -33,6 +33,8 @@ public class PlayerMove : MonoBehaviour
 	void Start()
 	{
 		MyName = gameObject.name;
+		//SecondTimeCount
+		StartCoroutine(SecondCount());
 	}
 
 	public enum PlayerState
@@ -64,8 +66,6 @@ public class PlayerMove : MonoBehaviour
 				case PlayerState.Left: RollLeft(); return;
 			}
 		}
-		//SecondTimeCount
-		StartCoroutine(SecondCount());
 
 		//Downにいたときに戻るときの処理（少し複雑）
 		StartCoroutine(FalseDown());
@@ -450,7 +450,7 @@ public class PlayerMove : MonoBehaviour
 
 	IEnumerator SecondCount()
 	{
-		yield return new WaitForSeconds(10.0f);
+		yield return new WaitForSeconds(22.7f);
 		SecondTime = true;
 		yield return new WaitForSeconds(10.4f);
 		SecondTime = false;

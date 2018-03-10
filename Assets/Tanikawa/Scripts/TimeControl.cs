@@ -87,7 +87,7 @@ public class TimeControl : MonoBehaviour
                 RoteTime = Mathf.Max(RoteTime, 0.0f);
                 if (RoteTime == 0.0f)
                 {
-                    //cCube.GetComponent<StageMake>().RamdomRote();
+                    cCube.GetComponent<StageMake>().RandomRote();
                     RoteTime = 10.0f;
                     Debug.Log("RoteTime");
                 }
