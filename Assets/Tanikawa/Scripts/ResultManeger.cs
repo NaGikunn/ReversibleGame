@@ -11,7 +11,7 @@ public class ResultManeger : MonoBehaviour
 
     public Text[] ImaText = new Text[2];
 
-    public Animator[] ResCube = new Animator[2];
+    public Animator[] AnimRes = new Animator[2];
 
     bool Winflg;
 
@@ -32,13 +32,13 @@ public class ResultManeger : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            ResCube[0].SetBool("WinB", true);
-            ResCube[1].SetBool("LoseW", true);
+            AnimRes[0].SetBool("WinB", true);
+            AnimRes[1].SetBool("LoseW", true);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            ResCube[0].SetBool("LoseB", true);
-            ResCube[1].SetBool("WinW", true);
+            AnimRes[0].SetBool("LoseB", true);
+            AnimRes[1].SetBool("WinW", true);
         }
 
         //FirstTime.text = string.Format("{0:00}", (int)FirstTime);
