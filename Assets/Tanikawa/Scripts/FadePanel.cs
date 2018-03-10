@@ -12,25 +12,28 @@ public class FadePanel : MonoBehaviour
 
     private SceneLoad SL;
 
-	private void Awake()
-	{
+    void Awake()
+    {
+        Tile = gameObject;
+        SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
 
-		Tile = gameObject;
-		SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
+        Vector3 Scale = Vector3.zero;
+    }
 
-		Vector3 Scale = Vector3.zero;
-	}
-
+    //FadeInパネル開始
     public void FadeInStart()
     {
         Tile.SetActive(true);
-            StartCoroutine(FadeIn());
+            StartCoroutine(FadeIn()); 
     }
+    
+    //FadeOutパネル開始
     public void FadeOutStart()
     {
-            StartCoroutine(FadeOut());
+            StartCoroutine(FadeOut()); 
     }
 
+    //FadeOutパネル
     private IEnumerator FadeOut()
     {
         while (true){
@@ -45,6 +48,7 @@ public class FadePanel : MonoBehaviour
         }
     }
 
+    //FadeInパネル
     private IEnumerator FadeIn()
     {
         Tile.SetActive(true);
