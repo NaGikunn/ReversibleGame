@@ -11,28 +11,26 @@ public class ResultManeger : MonoBehaviour
 
     public Text[] ImaText = new Text[2];
 
-    GameObject[] ImaSplash = new GameObject[2];
+    public Animator[] ResCube = new Animator[2];
+
+    bool Winflg;
+
+
 
 	// Use this for initialization
 	void Start ()
     {
-        ImaSplash[0] = (GameObject)Resources.Load("Prefab/BlackSplash");
-        ImaSplash[1] = (GameObject)Resources.Load("Prefab/WhiteSplash");
 
         LoadManeger2.GetComponent<SceneLoad>().ColOut();
+        Winflg = false;
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Instantiate(ImaSplash[0]);
-        }
+        //FirstTime.text = string.Format("{0:00}", (int)FirstTime);
+        //SecondTimeLabel.text = string.Format("{0:00}", (int)SecondTime);
+    }
 
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            Instantiate(ImaSplash[1]);
-        }
-	}
+    //ImaAni[0].SetBool("point", true);
 }

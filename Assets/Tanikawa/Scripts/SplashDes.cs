@@ -12,6 +12,6 @@ public class SplashDes : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        Destroy(this.gameObject, 0.5f);	
+        Destroy(this.gameObject, 0.3f);	
 	}
 }
