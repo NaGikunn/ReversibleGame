@@ -19,7 +19,6 @@ public class CameraControl2 : MonoBehaviour
 	public static bool LeftSide = false;
 	public static bool BackSide = false;
 	public static bool DownSide = false;
-	public static bool FrontSide = false;
 	public GameObject Player = null;
 	public enum CameraState
 	{
