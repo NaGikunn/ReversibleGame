@@ -15,11 +15,13 @@ public class ResultManeger : MonoBehaviour
 
     bool Winflg;
 
-
+    int[] LastPoint = new int[2];
 
 	// Use this for initialization
 	void Start ()
     {
+        //LastPoint[0]=BlackPoint
+        //LastPoint[1]=WhitePoint
 
         LoadManeger2.GetComponent<SceneLoad>().ColOut();
         Winflg = false;
@@ -28,6 +30,17 @@ public class ResultManeger : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            ResCube[0].SetBool("WinB", true);
+            ResCube[1].SetBool("LoseW", true);
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            ResCube[0].SetBool("LoseB", true);
+            ResCube[1].SetBool("WinW", true);
+        }
+
         //FirstTime.text = string.Format("{0:00}", (int)FirstTime);
         //SecondTimeLabel.text = string.Format("{0:00}", (int)SecondTime);
     }
