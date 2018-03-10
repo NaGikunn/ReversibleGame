@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Foot : MonoBehaviour
 {
-    public SpriteRenderer FootA;
+    private SpriteRenderer FootA;
 
     float alpha;
 
@@ -13,7 +13,7 @@ public class Foot : MonoBehaviour
 	void Start ()
     {
         alpha = 1.0f;
-
+		FootA = GetComponent<SpriteRenderer>();
         FootA.color = new Color(FootA.color.r, FootA.color.g, FootA.color.b, alpha);
     }
 	
@@ -22,9 +22,5 @@ public class Foot : MonoBehaviour
     {
         alpha -= 0.01f;
         FootA.color = new Color(FootA.color.r, FootA.color.g, FootA.color.b, alpha);
-        if (alpha <= 0.0f)
-        {
-            Destroy(gameObject);
-        }
     }
 }

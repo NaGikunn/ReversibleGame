@@ -12,13 +12,14 @@ public class FadePanel : MonoBehaviour
 
     private SceneLoad SL;
 
-    void Start()
-    {
-        Tile = gameObject;
-        SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
+	private void Awake()
+	{
 
-        Vector3 Scale = Vector3.zero;
-    }
+		Tile = gameObject;
+		SL = this.gameObject.transform.parent.GetComponent<SceneLoad>();
+
+		Vector3 Scale = Vector3.zero;
+	}
 
     public void FadeInStart()
     {

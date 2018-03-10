@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4734731266124720}
   - component: {fileID: 212719896024218514}
-  - component: {fileID: 114512455735575462}
+  - component: {fileID: 114231171146414446}
   m_Layer: 0
   m_Name: P_Tex_Foot(B)
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &114512455735575462
+--- !u!114 &114231171146414446
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,10 +49,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1935934677156550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9fb5e03f2141e44b95fc75dacc39f02, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d39094badf006f4cb25f0abf9c6e402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FootA: {fileID: 212719896024218514}
 --- !u!212 &212719896024218514
 SpriteRenderer:
   m_ObjectHideFlags: 1
