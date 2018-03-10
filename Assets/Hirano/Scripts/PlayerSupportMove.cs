@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerSupportMove : MonoBehaviour
 {
 	private Vector3 PlayerPos;
-	private bool stop = false;
 	// Use this for initialization
 	void Start ()
 	{
@@ -16,14 +15,10 @@ public class PlayerSupportMove : MonoBehaviour
 	void Update ()
 	{
 		PlayerPos = transform.position;
-		if (!stop)
+		if (PlayerPos.x <= 5.0f)
 		{
-			if (PlayerPos.y <= -4.5f)
-			{
-				stop = true;
-				PlayerPos.z += 1.0f;
-				transform.position = PlayerPos;
-			}
+			PlayerPos.x += 1.0f;
+			transform.position = PlayerPos;
 		}
 	}
 }

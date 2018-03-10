@@ -63,34 +63,45 @@ public class PlayerMove : MonoBehaviour
 				case PlayerState.Left: RollLeft(); return;
 			}
 		}
+		//Downにいたときに戻るときの処理（少し複雑）
+		StartCoroutine(FalseDown());
+
 		//Downにきたら	
 		if (PlayerPos.y <= -4.5f && (isBack || isRight || isLeft || isFront))
 		{
 			Stop = true;
+			//Playerの移動する前にBoolがFalseになってしまうのでコルーチンで遅らせる
 			if (Stop)
 			{
 				if (isFront)
 				{
-					//PlayerPos.z += 1.0f;
-					isFront = false;
+					PlayerPos.z += 2.0f;
+					StartCoroutine(TimeisFront());
 				}
 				else if (isBack)
 				{
-					//PlayerPos.z -= 1.0f;
-					isBack = false;
+					PlayerPos.z -= 2.0f;
+					StartCoroutine(TimeisBack());
 				}
 				else if (isRight)
 				{
-					//PlayerPos.x -= 1.0f;
-					isRight = false;
+					PlayerPos.x -= 2.0f;
+					StartCoroutine(TimeisRight());
 				}
 				else if (isLeft)
 				{
-					//PlayerPos.x += 1.0f;
-					isLeft = false;
+					PlayerPos.x += 2.0f;
+					StartCoroutine(TimeisLeft());
 				}
-				//transform.position = PlayerPos;
-				CameraControl.DownSide = true;
+				transform.position = PlayerPos;
+				if (gameObject.name == "PlayerManger")
+				{
+					CameraControl.DownSide = true;
+				}
+				else
+				{
+					CameraControl2.DownSide = true;
+				}
 				isDown = true;
 				Stop = false;
 			}
@@ -99,6 +110,117 @@ public class PlayerMove : MonoBehaviour
 				return;
 			}
 		}
+
+	}
+
+	IEnumerator FalseDown()
+	{
+		yield return new WaitForSeconds(0.1f);
+		while (true)
+		{
+			//Downにいたときに戻るときの処理（少し複雑）
+			if (isDown && (PlayerPos.z >= 3.0f || PlayerPos.z <= -3.0f || PlayerPos.x >= 3.0f || PlayerPos.x <= -3.0f))
+			{
+				Debug.Log("sitakaradetayo");
+				//Down側からでたらカメラとそのDownの操作をOFF
+				isDown = false;
+				if (gameObject.name == "PlayerManger")
+				{
+					CameraControl.DownSide = false;
+				}
+				else
+				{
+					CameraControl2.DownSide = false;
+				}
+				PlayerPos.y += 1.0f;
+				transform.position = PlayerPos;
+
+				//Right側に出た時
+				if (PlayerPos.x >= 3.0f)
+				{
+					if (gameObject.name == "PlayerManger")
+					{
+						CameraControl.RightSide = true;
+					}
+					else
+					{
+						CameraControl2.RightSide = true;
+					}
+					isRight = true;
+				}
+
+				//Back側に出た時
+				if (PlayerPos.z >= 3.0f)
+				{
+					if (gameObject.name == "PlayerManger")
+					{
+						CameraControl.BackSide = true;
+					}
+					else
+					{
+						CameraControl2.BackSide = true;
+					}
+					isBack = true;
+				}
+
+				//Left側に出た時
+				if (PlayerPos.x <= -3.0f)
+				{
+					if (gameObject.name == "PlayerManger")
+					{
+						CameraControl.LeftSide = true;
+					}
+					else
+					{
+						CameraControl2.LeftSide = true;
+					}
+					isLeft = true;
+				}
+
+				//Front側に出た時
+				if (PlayerPos.z <= -3.0f)
+				{
+					if (gameObject.name == "PlayerManger")
+					{
+						CameraControl.DownSide = false;
+					}
+					else
+					{
+						CameraControl2.DownSide = false;
+					}
+					isFront = true;
+				}
+			}
+			yield return null;
+		}
+	}
+
+	IEnumerator TimeisFront()
+	{
+		yield return new WaitForSeconds(0.1f);
+		isFront = false;
+		yield return null;
+	}
+
+	IEnumerator TimeisBack()
+	{
+		yield return new WaitForSeconds(0.1f);
+		isBack = false;
+		yield return null;
+	}
+
+	IEnumerator TimeisRight()
+	{
+		yield return new WaitForSeconds(0.1f);
+		isRight = false;
+		yield return null;
+	}
+
+	IEnumerator TimeisLeft()
+	{
+		yield return new WaitForSeconds(0.1f);
+		isLeft = false;
+		yield return null;
 	}
 
 	private void RollUp()
@@ -323,7 +445,7 @@ public class PlayerMove : MonoBehaviour
 		isRolling = false;
 	}
 
-	//Stateを設定
+	//InputでStateを設定
 	public void InputUpdate()
 	{
 		//最初はIdol
@@ -432,14 +554,28 @@ public class PlayerMove : MonoBehaviour
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isBack = true;
-				CameraControl.BackSide = true;
+				if (gameObject.name == "PlayerManger")
+				{
+					CameraControl.BackSide = true;
+				}
+				else
+				{
+					CameraControl2.BackSide = true;
+				}
 			}
 			else if(PlayerPos.x >= 3.0f) //Rightにきたら
 			{
 				PlayerPos.y -= 1.0f;
 				transform.position = PlayerPos;
 				isRight = true;
-				CameraControl.RightSide = true;
+				if (gameObject.name == "PlayerManger")
+				{
+					CameraControl.RightSide = true;
+				}
+				else
+				{
+					CameraControl2.RightSide = true;
+				}
 			}
 			else if (PlayerPos.x <= -3.0f) //Leftにきたら
 			{
@@ -447,68 +583,209 @@ public class PlayerMove : MonoBehaviour
 				transform.position = PlayerPos;
 				isLeft = true;
 				Stop = false;
-				CameraControl.LeftSide = true;
+				if (gameObject.name == "PlayerManger")
+				{
+					CameraControl.LeftSide = true;
+				}
+				else
+				{
+					CameraControl2.LeftSide = true;
+				}
 			}
 
 		}
-		//SideにいてSideの1を超えたら
+		//Frontから外にでたら
 		if (isFront && PlayerPos.y >= 1.0f)
 		{
 			isFront = false;
 			PlayerPos.z += 1.0f;
 			transform.position = PlayerPos;
 		}
+		//FrontからLeftに行く場合
+		if(isFront && PlayerPos.x <= -3.0f)
+		{
+			isFront = false;
+			PlayerPos.z += 1.0f;
+			transform.position = PlayerPos;
+			isLeft = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.LeftSide = true;
+			}
+			else
+			{
+				CameraControl2.LeftSide = true;
+			}
+		}
+		//FrontからRightに行く場合
+		if (isFront && PlayerPos.x >= 3.0f)
+		{
+			isFront = false;
+			PlayerPos.z += 1.0f;
+			transform.position = PlayerPos;
+			isRight = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.RightSide = true;
+			}
+			else
+			{
+				CameraControl2.RightSide = true;
+			}
+		}
 
-		if(isBack && PlayerPos.y >= 1.0f)
+
+		//Backから上にいったら
+		if (isBack && PlayerPos.y >= 1.0f)
 		{
 			isBack = false;
-			CameraControl.BackSide = false;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.BackSide = false;
+			}
+			else
+			{
+				CameraControl2.BackSide = false;
+			}
 			PlayerPos.z -= 1.0f;
 			transform.position = PlayerPos;
 		}
+		//BackからRightに行く場合
+		if (isBack && PlayerPos.x >= 3.0f)
+		{
+			isBack = false;
+			PlayerPos.z -= 1.0f;
+			transform.position = PlayerPos;
+			isRight = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.BackSide = false;
+				CameraControl.RightSide = true;
+			}
+			else
+			{
+				CameraControl2.BackSide = false;
+				CameraControl2.RightSide = true;
+			}
+		}
+		//BackからLeftに行く場合
+		if (isBack && PlayerPos.x <= -3.0f)
+		{
+			isBack = false;
+			PlayerPos.z -= 1.0f;
+			transform.position = PlayerPos;
+			isLeft = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.BackSide = false;
+				CameraControl.LeftSide = true;
+			}
+			else
+			{
+				CameraControl2.BackSide = false;
+				CameraControl2.LeftSide = true;
+			}
+		}
 
-		if(isRight && PlayerPos.y >= 1.0f)
+
+		//Rightから上に行ったら
+		if (isRight && PlayerPos.y >= 1.0f)
 		{
 			isRight = false;
-			CameraControl.RightSide = false;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.RightSide = false;
+			}
+			else
+			{
+				CameraControl2.RightSide = false;
+			}
 			PlayerPos.x -= 1.0f;
 			transform.position = PlayerPos;
 		}
+		//RightからFrontに行く場合
+		if (isRight && PlayerPos.z <= -3.0f)
+		{
+			isRight = false;
+			PlayerPos.x -= 1.0f;
+			transform.position = PlayerPos;
+			isFront = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.RightSide = false;
+			}
+			else
+			{
+				CameraControl2.RightSide = false;
+			}
+		}
+		//RightからBackに行く場合
+		if (isRight && PlayerPos.z >= 3.0f)
+		{
+			isRight = false;
+			PlayerPos.x -= 1.0f;
+			transform.position = PlayerPos;
+			isBack = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.RightSide = false;
+				CameraControl.BackSide = true;
+			}
+			else
+			{
+				CameraControl2.RightSide = false;
+				CameraControl2.BackSide = true;
+			}
+		}
 
-		if(isLeft && PlayerPos.y >= 1.0f)
+		//Leftから上にいったら
+		if (isLeft && PlayerPos.y >= 1.0f)
 		{
 			isLeft = false;
-			CameraControl.LeftSide = false;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.LeftSide = false;
+			}
+			else
+			{
+				CameraControl2.LeftSide = false;
+			}
 			PlayerPos.x += 1.0f;
 			transform.position = PlayerPos;
 		}
-
-		if (isDown && (PlayerPos.z >= 4.0f || PlayerPos.z <= -4.0f || PlayerPos.x >= 4.0f || PlayerPos.x <= -4.0f))
+		//LeftからFrontに行く場合
+		if (isLeft && PlayerPos.z <= -3.0f)
 		{
-			isDown = false;
-			CameraControl.DownSide = false;
-			if (PlayerPos.x >= 3.0f)
-			{
-				CameraControl.RightSide = true;
-				isRight = true;
-			}
-			if(PlayerPos.x <= -3.0f)
-			{
-				CameraControl.LeftSide = true;
-				isLeft = true;
-			}
-			if(PlayerPos.z >= 3.0f)
-			{
-				CameraControl.BackSide = true;
-				isBack = true;
-			}
-			if (PlayerPos.z <= -3.0f)
-			{
-				CameraControl.DownSide = false;
-				isFront = true;
-			}
-			PlayerPos.y += 1.0f;
+			isLeft = false;
+			PlayerPos.x += 1.0f;
 			transform.position = PlayerPos;
+			isFront = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.LeftSide = false;
+			}
+			else
+			{
+				CameraControl2.LeftSide = false;
+			}
+		}
+		//LeftからBackに行く場合
+		if (isLeft && PlayerPos.z >= 3.0f)
+		{
+			isLeft = false;
+			PlayerPos.x += 1.0f;
+			transform.position = PlayerPos;
+			isBack = true;
+			if (gameObject.name == "PlayerManger")
+			{
+				CameraControl.LeftSide = false;
+				CameraControl.BackSide = true;
+			}
+			else
+			{
+				CameraControl2.LeftSide = false;
+				CameraControl2.BackSide = true;
+			}
 		}
 	}
 

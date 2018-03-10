@@ -8492,7 +8492,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1024859801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5811effce2d9224e813d008d332a4ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 2272378865767ad4483a95b6f821f955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   RightPoint: {fileID: 310011859}
@@ -8868,7 +8868,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1048354359}
   - component: {fileID: 1048354360}
-  - component: {fileID: 1048354361}
   m_Layer: 0
   m_Name: PlayerManger
   m_TagString: Untagged
@@ -8904,17 +8903,6 @@ MonoBehaviour:
   rollFrame: 6
   PaintMat: {fileID: 2100000, guid: 782216d5ce05a3e449da8d9ef0858c97, type: 2}
   Footprint: {fileID: 1935934677156550, guid: 031d59145dc0261418480abaf402e6c9, type: 2}
---- !u!114 &1048354361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1048354358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8261e979fbc197a4293b3f830d4a942c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1049737249
 GameObject:
   m_ObjectHideFlags: 0

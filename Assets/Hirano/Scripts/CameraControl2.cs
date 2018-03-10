@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+public class CameraControl2 : MonoBehaviour
 {
 	//カメラの位置を空のオブジェクトに
 	public Transform RightPoint;
@@ -19,6 +19,7 @@ public class CameraControl : MonoBehaviour
 	public static bool LeftSide = false;
 	public static bool BackSide = false;
 	public static bool DownSide = false;
+	public static bool FrontSide = false;
 	public GameObject Player = null;
 	public enum CameraState
 	{
@@ -29,15 +30,15 @@ public class CameraControl : MonoBehaviour
 		Down,
 	}
 	// Use this for initialization
-	void Start ()
+	void Start()
 	{
 		PlayerPosition = transform.position;
 		PlayerRotate = transform.rotation;
 	}
-	
-	
+
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
 	{
 		switch (State)
 		{
@@ -62,7 +63,7 @@ public class CameraControl : MonoBehaviour
 
 	void StateControl()
 	{
-		if (Player.name == "PlayerManger")
+		if (Player.name == "PlayerManger2")
 		{
 			if (RightSide)
 			{
@@ -148,7 +149,7 @@ public class CameraControl : MonoBehaviour
 
 	void CameraDown()
 	{
-		//BackSideに来たらカメラを移動
+		//Downideに来たらカメラを移動
 		transform.position = DownPoint.position;
 		transform.rotation = Quaternion.Euler(-80, 0, 0);
 		//上に行ったらRight,Left,Sideに戻る
