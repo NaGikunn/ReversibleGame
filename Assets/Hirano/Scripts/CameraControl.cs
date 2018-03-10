@@ -19,7 +19,6 @@ public class CameraControl : MonoBehaviour
 	public static bool LeftSide = false;
 	public static bool BackSide = false;
 	public static bool DownSide = false;
-	public GameObject Player = null;
 	public enum CameraState
 	{
 		Idol,
@@ -62,28 +61,25 @@ public class CameraControl : MonoBehaviour
 
 	void StateControl()
 	{
-		if (Player.name == "PlayerManger")
+		if (RightSide)
 		{
-			if (RightSide)
-			{
-				State = CameraState.Right;
-			}
-			else if (LeftSide)
-			{
-				State = CameraState.Left;
-			}
-			else if (BackSide)
-			{
-				State = CameraState.Back;
-			}
-			else if (DownSide)
-			{
-				State = CameraState.Down;
-			}
-			else
-			{
-				State = CameraState.Idol;
-			}
+			State = CameraState.Right;
+		}
+		else if (LeftSide)
+		{
+			State = CameraState.Left;
+		}
+		else if (BackSide)
+		{
+			State = CameraState.Back;
+		}
+		else if (DownSide)
+		{
+			State = CameraState.Down;
+		}
+		else
+		{
+			State = CameraState.Idol;
 		}
 	}
 

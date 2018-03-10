@@ -3478,7 +3478,6 @@ MonoBehaviour:
   BackPoint: {fileID: 808467407}
   LeftPoint: {fileID: 178744861}
   DownPoint: {fileID: 364195949}
-  Player: {fileID: 1048354358}
 --- !u!4 &491129483
 Transform:
   m_ObjectHideFlags: 0
@@ -8426,7 +8425,6 @@ MonoBehaviour:
   BackPoint: {fileID: 808467407}
   LeftPoint: {fileID: 178744861}
   DownPoint: {fileID: 364195949}
-  Player: {fileID: 933433742}
 --- !u!4 &1024859803
 Transform:
   m_ObjectHideFlags: 0

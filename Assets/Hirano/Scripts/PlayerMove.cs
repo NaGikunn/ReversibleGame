@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
 	void Update()
 	{
 		//Stateメソッド
-		InputUpdate();
+		StartCoroutine(InputUpdate());
 		//Ray
 		PanelRay();
 		//回ってなければキー入力されない
@@ -121,7 +121,6 @@ public class PlayerMove : MonoBehaviour
 			//Downにいたときに戻るときの処理（少し複雑）
 			if (isDown && (PlayerPos.z >= 3.0f || PlayerPos.z <= -3.0f || PlayerPos.x >= 3.0f || PlayerPos.x <= -3.0f))
 			{
-				Debug.Log("sitakaradetayo");
 				//Down側からでたらカメラとそのDownの操作をOFF
 				isDown = false;
 				if (gameObject.name == "PlayerManger")
@@ -446,54 +445,59 @@ public class PlayerMove : MonoBehaviour
 	}
 
 	//InputでStateを設定
-	public void InputUpdate()
+	IEnumerator InputUpdate()
 	{
-		//最初はIdol
-		State = PlayerState.Idol;
-
-		if (MyName == "PlayerManger")
+		yield return new WaitForSeconds(12.7f);
+		while (true)
 		{
-			if (Input.GetKeyDown(KeyCode.D))
-			{
-				State = PlayerState.Right;
-			}
+			//最初はIdol
+			State = PlayerState.Idol;
 
-			if (Input.GetKeyDown(KeyCode.S))
+			if (MyName == "PlayerManger")
 			{
-				State = PlayerState.Down;
-			}
+				if (Input.GetKeyDown(KeyCode.D))
+				{
+					State = PlayerState.Right;
+				}
 
-			if (Input.GetKeyDown(KeyCode.A))
-			{
-				State = PlayerState.Left;
-			}
+				if (Input.GetKeyDown(KeyCode.S))
+				{
+					State = PlayerState.Down;
+				}
 
-			if (Input.GetKeyDown(KeyCode.W))
-			{
-				State = PlayerState.Up;
-			}
-		}
-		else
-		{
-			if (Input.GetKeyDown(KeyCode.RightArrow))
-			{
-				State = PlayerState.Right;
-			}
+				if (Input.GetKeyDown(KeyCode.A))
+				{
+					State = PlayerState.Left;
+				}
 
-			if (Input.GetKeyDown(KeyCode.DownArrow))
-			{
-				State = PlayerState.Down;
+				if (Input.GetKeyDown(KeyCode.W))
+				{
+					State = PlayerState.Up;
+				}
 			}
+			else
+			{
+				if (Input.GetKeyDown(KeyCode.RightArrow))
+				{
+					State = PlayerState.Right;
+				}
 
-			if (Input.GetKeyDown(KeyCode.LeftArrow))
-			{
-				State = PlayerState.Left;
-			}
+				if (Input.GetKeyDown(KeyCode.DownArrow))
+				{
+					State = PlayerState.Down;
+				}
 
-			if (Input.GetKeyDown(KeyCode.UpArrow))
-			{
-				State = PlayerState.Up;
+				if (Input.GetKeyDown(KeyCode.LeftArrow))
+				{
+					State = PlayerState.Left;
+				}
+
+				if (Input.GetKeyDown(KeyCode.UpArrow))
+				{
+					State = PlayerState.Up;
+				}
 			}
+			yield return null;
 		}
 	}
 
