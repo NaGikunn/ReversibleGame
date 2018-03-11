@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StageMake : MonoBehaviour {
+public class StageMake : MonoBehaviour
+{
     int[] RoteAngle = { 90, 180, -90,-180}; //回転角度
     int RotaPattern = 0;//回転した時のswitch文でのパターンの数字
     int Bx, By, Bz;//for文で回す値スタートで全部書くと長くなったからやむなし
@@ -17,7 +19,8 @@ public class StageMake : MonoBehaviour {
     public GameObject[,,] RubikArray = new GameObject[5, 5, 5];//cubeを配列で管理するため
     public GameObject[,,] kariRubuk = new GameObject[5, 5, 5];//仮で納める配列
 	public GameObject CountPanel;
-
+	public Text player1text;
+	public Text player2text;
 	Vector3 Instantiatepos;//InstantiateがVector3の形じゃないとposition指定できなかったため
     Quaternion q = new Quaternion();//InstantiateがQuaternionを宣言しないととposition指定できなかったため
     PositionTeach ToTeach;
@@ -91,6 +94,9 @@ public class StageMake : MonoBehaviour {
                 ZRotationStage();
                 break;
         }
+
+		player1text.text = Bpoint.ToString();
+		player2text.text = Wpoint.ToString();
     }
     public void RandomRote()//回転させる軸を決めている
     {

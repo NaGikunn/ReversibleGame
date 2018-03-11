@@ -561,7 +561,14 @@ public class PlayerMove : MonoBehaviour
 				CountHitPanel = true;
 				//PanelのMaterialを変更
 				hit.collider.gameObject.GetComponent<Renderer>().material = PaintMat;
-				PointPlace.point = true;
+				if(gameObject.name  == "PlayerManger")
+				{
+					PointPlace.Bpoint = true;
+				}
+				else
+				{
+					PointPlace.Wpoint = true;
+				}
 			}
 			else if(PlayerPos.z <= -2.5f)//Frontにきたら
 			{
