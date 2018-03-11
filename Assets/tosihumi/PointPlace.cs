@@ -35,6 +35,7 @@ public class PointPlace : MonoBehaviour {
             StartCoroutine("ContinuationPoint");
         }
     }
+
     IEnumerator ContinuationPoint()//持続点を定期的にプラスしたりマイナスしたりする
     {
         yield return new WaitForSeconds(5);
