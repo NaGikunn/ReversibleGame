@@ -17,8 +17,9 @@ public class PointPlace : MonoBehaviour {
         SustainalePoint = true;//継続点を定期的に呼び出す
 	}
 	// Update is called once per frame
-	void Update () {
-        if(ren.material.name== "PrintMatPlayer1"&&point==true)
+	void Update ()
+	{
+		if (ren.material.name== "PrintMatPlayer1 (Instance)" && point==true)
         {
             StageM.Bpoint+=1;//ポイントマスを獲得した回数を入れている
             point = false;

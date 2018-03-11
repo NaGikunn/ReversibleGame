@@ -4084,7 +4084,7 @@ Prefab:
     - target: {fileID: 224218860549929280, guid: 048327f87a5617549b0a1cefbbb98f54,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224218860549929280, guid: 048327f87a5617549b0a1cefbbb98f54,
         type: 2}
@@ -4124,7 +4124,7 @@ Prefab:
     - target: {fileID: 224218860549929280, guid: 048327f87a5617549b0a1cefbbb98f54,
         type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 224218860549929280, guid: 048327f87a5617549b0a1cefbbb98f54,
         type: 2}
@@ -4335,7 +4335,7 @@ Prefab:
     - target: {fileID: 224545233336356244, guid: 867b0fe1d95a5884a932a5564d0b69d6,
         type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 224545233336356244, guid: 867b0fe1d95a5884a932a5564d0b69d6,
         type: 2}
@@ -7766,7 +7766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058332624
 GameObject:
@@ -10526,7 +10526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1376109623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11680,7 +11680,7 @@ RectTransform:
   - {fileID: 42155230}
   - {fileID: 1224296789}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14317,7 +14317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848693829
 GameObject:
@@ -15897,7 +15897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2038382083
 Transform:
   m_ObjectHideFlags: 0
@@ -15911,7 +15911,7 @@ Transform:
   m_Children:
   - {fileID: 865779383}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2061949899
 GameObject:
