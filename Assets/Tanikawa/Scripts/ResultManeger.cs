@@ -13,36 +13,55 @@ public class ResultManeger : MonoBehaviour
 
     public Animator[] AnimRes = new Animator[2];
 
-    bool Winflg;
+    bool Emulateflg;
 
-    int[] LastPoint = new int[2];
+    public int LastPointB;
+    public int LastPointW;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-        //LastPoint[0]=BlackPoint
-        //LastPoint[1]=WhitePoint
+       
 
         LoadManeger2.GetComponent<SceneLoad>().ColOut();
-        Winflg = false;
+        Emulateflg = false;
+
+        StartCoroutine(ResRoot());
     }
 
 	// Update is called once per frame
 	void Update ()
     {
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Emulateflg==true)
         {
-            AnimRes[0].SetBool("WinB", true);
-            AnimRes[1].SetBool("LoseW", true);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            AnimRes[0].SetBool("LoseB", true);
-            AnimRes[1].SetBool("WinW", true);
+            if (LastPointB>LastPointW)
+            {
+                AnimRes[0].SetBool("WinB", true);
+                AnimRes[1].SetBool("LoseW", true);
+            }
+            else if (LastPointB<LastPointW)
+            {
+                AnimRes[0].SetBool("LoseB", true);
+                AnimRes[1].SetBool("WinW", true);
+            }
         }
 
-        //FirstTime.text = string.Format("{0:00}", (int)FirstTime);
-        //SecondTimeLabel.text = string.Format("{0:00}", (int)SecondTime);
+        ImaText[0].text = string.Format("{0:0000}", LastPointB);
+        ImaText[1].text = string.Format("{0:0000}", LastPointW);
+    }
+
+    IEnumerator ResRoot()
+    {
+        yield return new WaitForSeconds(3.0f);
+        StaMove();
+        yield return new WaitForSeconds(7.0f);
+        Emulateflg = true;
+    }
+
+    public void StaMove()
+    {
+        AnimRes[0].SetBool("MoveB", true);
+        AnimRes[1].SetBool("MoveW", true);
     }
 
     //ImaAni[0].SetBool("point", true);
