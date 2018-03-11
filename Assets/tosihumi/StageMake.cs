@@ -11,15 +11,20 @@ public class StageMake : MonoBehaviour {
     public int Bpoint = 0, Wpoint = 0;//ポイントマス取得した回数記録
     public int BpointContinuation = 0, WpointContinuation = 0;//ポイントマスを継続しているときに加算される
     float RotationTime = 0; //時間 
-    public GameObject CenterCube;//盤面部分のcube
+
+	public GameObject CenterCube;//盤面部分のcube
     public GameObject InsideCube;//内側にあるcube
     public GameObject[,,] RubikArray = new GameObject[5, 5, 5];//cubeを配列で管理するため
     public GameObject[,,] kariRubuk = new GameObject[5, 5, 5];//仮で納める配列
-    Vector3 Instantiatepos;//InstantiateがVector3の形じゃないとposition指定できなかったため
+	public GameObject CountPanel;
+
+	Vector3 Instantiatepos;//InstantiateがVector3の形じゃないとposition指定できなかったため
     Quaternion q = new Quaternion();//InstantiateがQuaternionを宣言しないととposition指定できなかったため
     PositionTeach ToTeach;
-    // Use this for initialization
-    void Start () {
+    
+	// Use this for initialization
+    void Start ()
+	{
         for (Bx = 0; Bx <= 4; Bx++)
         {//幅(X)
             for (By = 0; By <= 4; By++)
@@ -41,29 +46,16 @@ public class StageMake : MonoBehaviour {
     }
     void BWMake()//Y軸状の座標４のcubeを作成している
     {
-        //cubeの生成
-        if (Bx == 0 || Bx == 4)
-        {
-            RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
-        }
-        else
-        {
-            RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
-        }
-    }
+		//cubeの生成
+		RubikArray[Bx, By, Bz] = Instantiate(CountPanel, Instantiatepos, q);
+	}
     void CubuMake()
     {
         if (By == 0)
-        {//底面を生成するとき
-            if (Bx == 0 || Bx == 4)
-            {
-                RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
-            }
-            else
-            {
-                RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
-            }
-        }
+        {
+			//底面を生成するとき
+			RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
+		}
         else//底面以外のcubeを生成するとき
         {
             if (Bx == 0 || Bx == 4)
@@ -71,7 +63,8 @@ public class StageMake : MonoBehaviour {
                 RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);
             }
             else
-            {//karicubeを生成している
+            {
+				//karicubeを生成している
                 if (Bz == 0 || Bz == 4)
                 {//sidecubeを生成している
                     RubikArray[Bx, By, Bz] = Instantiate(CenterCube, Instantiatepos, q);

@@ -6974,7 +6974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4996260c16010e848b04e0ae8ff35eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollFrame: 6
+  rollFrame: 8
   PaintMat: {fileID: 2100000, guid: 88d385f8b5bfacf4f94c428ccf64834b, type: 2}
   Footprint: {fileID: 1824316613281444, guid: da2a2520c962bb244b02d4239275273e, type: 2}
 --- !u!4 &911989277
@@ -7598,7 +7598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4996260c16010e848b04e0ae8ff35eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollFrame: 6
+  rollFrame: 8
   PaintMat: {fileID: 2100000, guid: 782216d5ce05a3e449da8d9ef0858c97, type: 2}
   Footprint: {fileID: 1935934677156550, guid: 031d59145dc0261418480abaf402e6c9, type: 2}
 --- !u!4 &1014658781
@@ -10542,8 +10542,9 @@ MonoBehaviour:
   Wpoint: 0
   BpointContinuation: 0
   WpointContinuation: 0
-  CenterCube: {fileID: 1858492653328042, guid: f786ff69732b8c94fae1b22ffbc69aa9, type: 2}
+  CenterCube: {fileID: 1628741650957762, guid: 7fd8c92beda54144cb1ab44088fa5ae1, type: 2}
   InsideCube: {fileID: 1628741650957762, guid: 7fd8c92beda54144cb1ab44088fa5ae1, type: 2}
+  CountPanel: {fileID: 1638336874314992, guid: 190c9dce362edff45bbf3d5511861173, type: 2}
 --- !u!4 &1376109624
 Transform:
   m_ObjectHideFlags: 0
