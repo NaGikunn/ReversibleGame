@@ -56,7 +56,11 @@ public class Explain : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+<<<<<<< HEAD
                 SceneManager.LoadScene("MainScene");
+=======
+                SceneManager.LoadScene("Back");
+>>>>>>> リザルトのあれこれ
             }
         }
     }

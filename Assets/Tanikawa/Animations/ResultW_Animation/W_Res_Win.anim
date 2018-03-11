@@ -23,6 +23,15 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: {x: 180, y: 0, z: 180}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: {x: 180, y: -360, z: 180}
         inSlope: {x: 0, y: 0, z: 0}
@@ -43,6 +52,15 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: {x: 0, y: 2, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
@@ -108,6 +126,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: 0
         inSlope: 0
@@ -130,6 +157,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: 2
         inSlope: 0
@@ -152,6 +188,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: 0
         inSlope: 0
@@ -174,6 +219,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 180
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: 180
         inSlope: 0
@@ -196,6 +250,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: -360
         inSlope: 0
@@ -218,6 +281,15 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
+<<<<<<< HEAD
+=======
+        time: 0.16666667
+        value: 180
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+>>>>>>> リザルトのあれこれ
         time: 1
         value: 180
         inSlope: 0

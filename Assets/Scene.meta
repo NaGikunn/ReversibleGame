@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 448072d87ee4c27448a302ccbd8e7c4f
 folderAsset: yes
 timeCreated: 1520700205
+=======
+guid: 55ba881679dcade428a7aeb4c413fa1f
+folderAsset: yes
+timeCreated: 1520212978
+>>>>>>> リザルトのあれこれ
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

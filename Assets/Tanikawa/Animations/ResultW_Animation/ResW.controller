@@ -20,6 +20,21 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+<<<<<<< HEAD
+=======
+  - m_Name: MoveW
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: OnWinW
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+>>>>>>> リザルトのあれこれ
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -39,7 +54,14 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
+<<<<<<< HEAD
   m_Conditions: []
+=======
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: OnWinW
+    m_EventTreshold: 0
+>>>>>>> リザルトのあれこれ
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102676826186028850}
   m_Solo: 0
@@ -60,7 +82,14 @@ AnimatorStateTransition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
+<<<<<<< HEAD
   m_Conditions: []
+=======
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: MoveW
+    m_EventTreshold: 0
+>>>>>>> リザルトのあれこれ
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102456723403564332}
   m_Solo: 0
