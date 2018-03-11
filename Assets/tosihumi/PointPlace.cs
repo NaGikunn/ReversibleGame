@@ -22,16 +22,16 @@ public class PointPlace : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		if (ren.material.name== "PrintMatPlayer1 (Instance)" && Bpoint==true)
-        {
-            StageM.Bpoint+=1;//ポイントマスを獲得した回数を入れている
-			return;
-        }
-        if(ren.material.name == "PrintMatPlayer2 (Instance)" && Wpoint == true)
-        {
-			StageM.Wpoint += 1;//ポイントマスを獲得した回数を入れている
-			return;
-        }
+		//if (ren.material.name== "PrintMatPlayer1 (Instance)" && Bpoint==true)
+  //      {
+  //          StageM.Bpoint+=1;//ポイントマスを獲得した回数を入れている
+		//	return;
+  //      }
+  //      if(ren.material.name == "PrintMatPlayer2 (Instance)" && Wpoint == true)
+  //      {
+		//	StageM.Wpoint += 1;//ポイントマスを獲得した回数を入れている
+		//	return;
+  //      }
         if (SustainalePoint)
         {
             SustainalePoint = false;
@@ -51,7 +51,7 @@ public class PointPlace : MonoBehaviour {
             else if (names != ren.material.name)
             {
                 names = ren.material.name;//違ったらnamesに名前を入れる
-				StageM.Wpoint += 1;//ポイントマスを獲得した回数を入れている
+				//StageM.Wpoint += 1;//ポイントマスを獲得した回数を入れている
 				StageM.WpointContinuation -= 1;//白色の継続ポイントをマイナスにする
             }
         }else if(ren.material.name == "PrintMatPlayer2 (Instance)")//白のとき
