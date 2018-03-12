@@ -80,7 +80,6 @@ public class TimeControl : MonoBehaviour
 
             SecondTime -= Time.deltaTime;             // 1フレームにかかる時間を引く
             SecondTime = Mathf.Max(SecondTime, 0.0f);   // マイナス時間にならないように
-
             if (SecondTime >= 9.0f)
             {
                 RoteTime -= Time.deltaTime;

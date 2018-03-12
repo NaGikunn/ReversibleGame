@@ -27,12 +27,19 @@ public class CameraControl2 : MonoBehaviour
 		Left,
 		Down,
 	}
+	private void Awake()
+	{
+		RightSide = false;
+		LeftSide = false;
+		BackSide = false;
+		DownSide = false;
+	}
+
 	// Use this for initialization
 	void Start()
 	{
 		PlayerPosition = transform.position;
 		PlayerRotate = transform.rotation;
-		State = CameraState.Idol;
 	}
 
 

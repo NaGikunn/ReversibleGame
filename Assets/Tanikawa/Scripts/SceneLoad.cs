@@ -106,8 +106,8 @@ public class SceneLoad : MonoBehaviour
         {
             if (FadeEndTiles >= SquareCount_H * SquareCount_V)
             {
-                IsFadeIn = false;
-                FadeEndTiles = 0;
+				FadeEndTiles = 0;
+				IsFadeIn = false;
                 if(SceneName == "MainScene")
                 {
                     LoadInterval = 6.5f;
@@ -118,7 +118,7 @@ public class SceneLoad : MonoBehaviour
                 }
                 yield return new WaitForSeconds(LoadInterval);
                 SceneManager.LoadScene(NextSceneName);   // 次のシーンへ
-                break;
+				yield return null;
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
