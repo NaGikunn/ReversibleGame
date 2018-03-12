@@ -512,7 +512,7 @@ MonoBehaviour:
   - {fileID: 594891260}
   - {fileID: 443062214}
   - {fileID: 729699136}
-  LastPointB: 0
+  LastPointB: 100
   LastPointW: 0
 --- !u!4 &91010560
 Transform:
