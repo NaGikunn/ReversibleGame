@@ -472,7 +472,6 @@ public class PlayerMove : MonoBehaviour
 				State = PlayerState.Idol;
 				if (MyName == "PlayerManger")
 				{
-					
 					if (Input.GetKeyDown(KeyCode.D))
 					{
 						State = PlayerState.Right;
@@ -503,8 +502,7 @@ public class PlayerMove : MonoBehaviour
 
 					if (Input.GetKeyDown(KeyCode.DownArrow))
 					{
-						State = PlayerState.Down;
-					}
+						State = PlayerState.Down;					}
 
 					if (Input.GetKeyDown(KeyCode.LeftArrow))
 					{
@@ -519,6 +517,17 @@ public class PlayerMove : MonoBehaviour
 			}
 			yield return null;
 		}
+	}
+
+	//再表示
+	IEnumerator PlayerEdit()
+	{
+		gameObject.transform.GetChild(0).gameObject.SetActive(false);
+		SecondTime = true;
+		yield return new WaitForSeconds(1.0f);
+		SecondTime = false;
+		gameObject.transform.GetChild(0).gameObject.SetActive(true);
+		StageMake.RandomRota = false;
 	}
 
 	void PanelRay()
@@ -560,6 +569,10 @@ public class PlayerMove : MonoBehaviour
 			if (hit.collider.gameObject.CompareTag("Panel"))
 			{
 				CountHitPanel = false;
+				if (StageMake.RandomRota)
+				{
+					StartCoroutine(PlayerEdit());
+				}
 			}
 			else if (hit.collider.gameObject.CompareTag("CountPanel"))
 			{
@@ -626,6 +639,7 @@ public class PlayerMove : MonoBehaviour
 			}
 
 		}
+		
 		//Frontから外にでたら
 		if (isFront && PlayerPos.y >= 1.0f)
 		{
@@ -832,6 +846,42 @@ public class PlayerMove : MonoBehaviour
 			//Panelに足跡をつける
 			obj = Instantiate(Footprint, new Vector3(x, y - 0.4f, z), Quaternion.Euler(Rx, Ry, 0));
 			Destroy(obj, 0.8f);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.tag == "OutField")
+		{
+			Debug.Log("");
+			if (gameObject.name == "PlayerManger")
+			{
+				isFront = true;
+				isRight = false;
+				isLeft = false;
+				isBack = false;
+				isDown = false;
+				CameraControl.BackSide = false;
+				CameraControl.DownSide = false;
+				CameraControl.LeftSide = false;
+				CameraControl.RightSide = false;
+				PlayerPos = new Vector3(0, 0, 0);
+				transform.position = PlayerPos;
+			}
+			else
+			{
+				isFront = true;
+				isRight = false;
+				isLeft = false;
+				isBack = false;
+				isDown = false;
+				CameraControl2.BackSide = false;
+				CameraControl2.DownSide = false;
+				CameraControl2.LeftSide = false;
+				CameraControl2.RightSide = false;
+				PlayerPos = new Vector3(0, 0, 0);
+				transform.position = PlayerPos;
+			}
 		}
 	}
 }

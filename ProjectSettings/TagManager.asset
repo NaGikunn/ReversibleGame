@@ -9,6 +9,8 @@ TagManager:
   - Player2
   - Panel
   - CountPanel
+  - ResPleCube
+  - OutField
   layers:
   - Default
   - TransparentFX

@@ -13,7 +13,7 @@ public class StageMake : MonoBehaviour
     public int Bpoint = 0, Wpoint = 0;//ポイントマス取得した回数記録
     public int BpointContinuation = 0, WpointContinuation = 0;//ポイントマスを継続しているときに加算される
     float RotationTime = 0; //時間 
-
+	public static bool RandomRota = false;
 	public GameObject CenterCube;//盤面部分のcube
     public GameObject InsideCube;//内側にあるcube
     public GameObject[,,] RubikArray = new GameObject[5, 5, 5];//cubeを配列で管理するため
@@ -24,10 +24,11 @@ public class StageMake : MonoBehaviour
 	Vector3 Instantiatepos;//InstantiateがVector3の形じゃないとposition指定できなかったため
     Quaternion q = new Quaternion();//InstantiateがQuaternionを宣言しないととposition指定できなかったため
     PositionTeach ToTeach;
-    
+	public static GameObject rootbj;
 	// Use this for initialization
     void Start ()
 	{
+		RandomRota = false;
         for (Bx = 0; Bx <= 4; Bx++)
         {//幅(X)
             for (By = 0; By <= 4; By++)
@@ -100,10 +101,11 @@ public class StageMake : MonoBehaviour
     }
     public void RandomRote()//回転させる軸を決めている
     {
+		RandomRota = true;
         min = Random.Range(0, 5);//回転させるposition指定
         max = Random.Range(1, 4);//回転させるposition指定
         AngleMemory = Random.Range(0, 4);//角度の配列番号選択
-        RotaPattern = Random.Range(1, 4);//どの軸を回転させるか決める
+        RotaPattern = Random.Range(1, 2);//どの軸を回転させるか決める
         switch (RotaPattern)
         {
             case 1:
@@ -125,11 +127,16 @@ public class StageMake : MonoBehaviour
                     for (Bz = 0; Bz <= 4; Bz++){
                         if (min == 0){//回転させるときの親オブジェクトをInsidecubeにするための処理
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min+1, 2, 2].transform;
-                        }else if (min == 4){
+							rootbj = RubikArray[min + 1, 2, 2];
+						}
+						else if (min == 4){
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min-1, 2, 2].transform;
-                        }else{
+							rootbj = RubikArray[min - 1, 2, 2];
+						}
+						else{
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min, 2, 2].transform;
-                        }   
+							rootbj = RubikArray[min, 2, 2];
+						}   
                     }
                 }
             }
@@ -142,11 +149,16 @@ public class StageMake : MonoBehaviour
                     for (Bz = 0; Bz <= 4; Bz++){
                         if (min == 0){//回転させるときの親オブジェクトをInsidecubeにするための処理
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min + 1, 2, 2].transform;
-                        }else if (min == 4){
+							rootbj = RubikArray[min + 1, 2, 2];
+						}
+						else if (min == 4){
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min - 1, 2, 2].transform;
-                        }else{
+							rootbj = RubikArray[min - 1, 2, 2];
+						}
+						else{
                             RubikArray[Bx, By, Bz].transform.parent = RubikArray[min, 2, 2].transform;
-                        }
+							rootbj = RubikArray[min, 2, 2];
+						}
                     }
                 }
             }

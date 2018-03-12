@@ -74,7 +74,7 @@ public class SceneLoad : MonoBehaviour
             {
                 IsFadeOut = false;
                 FadeEndTiles = 0;
-                break;
+                yield return null;
             }
 
             yield return new WaitForSeconds(Time.deltaTime);
@@ -87,9 +87,9 @@ public class SceneLoad : MonoBehaviour
         IsFadeIn = true;
         //順番にFadeを始める
         int FadeCount = 1;
-        while (FadeCount <= SquareCount_H * SquareCount_V)
-        {
-            for (int i = 0; i < SquareCount_H; i++)
+		while (FadeCount <= SquareCount_H * SquareCount_V)
+		{
+			for (int i = 0; i < SquareCount_H; i++)
             {
                 for (int j = 0; j < SquareCount_V; j++)
                 {
@@ -101,28 +101,26 @@ public class SceneLoad : MonoBehaviour
                     }
                 }
             }
-        }
-        while (true)
-        {
-            if (FadeEndTiles >= SquareCount_H * SquareCount_V)
-            {
-				FadeEndTiles = 0;
-				IsFadeIn = false;
-                if(SceneName == "MainScene")
-                {
-                    LoadInterval = 6.5f;
-                }
-                else
-                {
-                    LoadInterval = 1.0f;
-                }
-                yield return new WaitForSeconds(LoadInterval);
-                SceneManager.LoadScene(NextSceneName);   // 次のシーンへ
-				yield return null;
-            }
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-    }
+		}
+
+		if (FadeEndTiles >= SquareCount_H * SquareCount_V)
+		{
+			FadeEndTiles = 0;
+			IsFadeIn = false;
+			if (SceneName == "MainScene")
+			{
+				LoadInterval = 6.5f;
+			}
+			else
+			{
+				LoadInterval = 1.0f;
+			}
+		}
+
+		yield return new WaitForSeconds(LoadInterval);
+		SceneManager.LoadScene(NextSceneName);   // 次のシーンへ
+		yield return null;
+	}
 
     void Awake()
     {

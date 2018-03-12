@@ -79,22 +79,6 @@ public class TextManeger : MonoBehaviour {
             imaCount -= 1;
         }
     }
-
-    //回転注意Image呼び出し
-    public void imaDanger()
-    {
-        if (imaCount == 0)
-        {
-            ImaTex[3].SetActive(true);
-            imaCount += 1;
-        }
-        else if (imaCount == 1)
-        {
-            ImaTex[3].SetActive(false);
-            imaCount -= 1;
-        }
-    }
-
     //終了Image呼び出し
     public void imaEnd()
     {

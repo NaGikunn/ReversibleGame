@@ -86,7 +86,6 @@ public class TimeControl : MonoBehaviour
                 RoteTime = Mathf.Max(RoteTime, 0.0f);
                 if (RoteTime == 0.0f)
                 {
-					TextMaster3.GetComponent<TextManeger>().imaDanger();
                     cCube.GetComponent<StageMake>().RandomRote();
                     RoteTime = 10.0f;
                     Debug.Log("RoteTime");
