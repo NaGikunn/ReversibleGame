@@ -40,7 +40,7 @@ public class FadePanel : MonoBehaviour
             if(transform.localScale.y <= 0){
                 Tile.SetActive(false);
                 SL.FadeEndTiles++;
-                break;
+                yield return null;
             }
             Scale.y = FadeMath;
             Tile.transform.localScale -= Scale;
@@ -57,6 +57,7 @@ public class FadePanel : MonoBehaviour
                 SL.FadeEndTiles++;
                 break;
             }
+
             Scale.y = FadeMath;
             Tile.transform.localScale += Scale;
             yield return new WaitForSeconds(Time.deltaTime);

@@ -111,6 +111,8 @@ public class SceneLoad : MonoBehaviour
                 if(SceneName == "MainScene")
                 {
                     LoadInterval = 6.5f;
+                    yield return new WaitForSeconds(LoadInterval);
+                    SceneManager.LoadScene(NextSceneName);
                 }
                 else
                 {
@@ -118,7 +120,7 @@ public class SceneLoad : MonoBehaviour
                 }
                 yield return new WaitForSeconds(LoadInterval);
                 SceneManager.LoadScene(NextSceneName);   // 次のシーンへ
-                break;
+               break;
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }
