@@ -13,7 +13,6 @@ public class ResultManeger : MonoBehaviour
 
 	public Animator[] AnimRes = new Animator[2];
 
-	bool Emulateflg;
 	bool TitleMoveflg;
 
 	public int LastPointB;
@@ -22,7 +21,6 @@ public class ResultManeger : MonoBehaviour
 	void Start()
 	{
 		LoadManeger2.GetComponent<SceneLoad>().ColOut();
-		Emulateflg = false;
 		TitleMoveflg = false;
 
 		StartCoroutine(ResRoot());
@@ -34,19 +32,19 @@ public class ResultManeger : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Emulateflg == true)
-		{
-			if (LastPointB > LastPointW)
-			{
-				AnimRes[0].SetBool("WinB", true);
-				AnimRes[1].SetBool("LoseW", true);
-			}
-			else if (LastPointB < LastPointW)
-			{
-				AnimRes[0].SetBool("LoseB", true);
-				AnimRes[1].SetBool("WinW", true);
-			}
-		}
+		//if (Emulateflg == true)
+		//{
+		//	if (LastPointB > LastPointW)
+		//	{
+		//		AnimRes[0].SetBool("WinB", true);
+		//		AnimRes[1].SetBool("LoseW", true);
+		//	}
+		//	else if (LastPointB < LastPointW)
+		//	{
+		//		AnimRes[0].SetBool("LoseB", true);
+		//		AnimRes[1].SetBool("WinW", true);
+		//	}
+		//}
 
 		if (TitleMoveflg == true)
 		{
@@ -65,9 +63,9 @@ public class ResultManeger : MonoBehaviour
 	{
 		yield return new WaitForSeconds(3.0f);
 		StaMove();
-		yield return new WaitForSeconds(7.0f);
-		Emulateflg = true;
 		yield return new WaitForSeconds(5.0f);
+		Emulate();
+		yield return new WaitForSeconds(2.0f);
 		MoveWin();
 		yield return new WaitForSeconds(2.0f);
 		AnimOn();
@@ -82,6 +80,20 @@ public class ResultManeger : MonoBehaviour
 		AnimRes[0].SetBool("MoveB", true);
 		AnimRes[1].SetBool("MoveW", true);
 	}
+	public void Emulate()
+	{
+		if (LastPointB > LastPointW)
+		{
+			AnimRes[0].SetBool("WinB", true);
+			AnimRes[1].SetBool("LoseW", true);
+		}
+		else if (LastPointB < LastPointW)
+		{
+			AnimRes[0].SetBool("LoseB", true);
+			AnimRes[1].SetBool("WinW", true);
+		}
+	}
+
 
 	public void MoveWin()
 	{

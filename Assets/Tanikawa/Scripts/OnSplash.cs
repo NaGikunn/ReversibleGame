@@ -35,6 +35,6 @@ public class OnSplash : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		Destroy(this.gameObject, 15.0f);
+		Destroy(this.gameObject, 10.0f);
 	}
 }
