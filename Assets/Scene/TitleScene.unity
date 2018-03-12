@@ -300,12 +300,12 @@ Prefab:
     - target: {fileID: 224066151141670640, guid: 94689c0dc26804f4c9f3bb25fea9fc1f,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 684
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 224066151141670640, guid: 94689c0dc26804f4c9f3bb25fea9fc1f,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 259.5
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 224066151141670640, guid: 94689c0dc26804f4c9f3bb25fea9fc1f,
         type: 2}
@@ -7804,7 +7804,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

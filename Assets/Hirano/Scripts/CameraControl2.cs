@@ -32,6 +32,7 @@ public class CameraControl2 : MonoBehaviour
 	{
 		PlayerPosition = transform.position;
 		PlayerRotate = transform.rotation;
+		State = CameraState.Idol;
 	}
 
 

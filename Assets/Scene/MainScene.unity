@@ -9400,6 +9400,7 @@ GameObject:
   - component: {fileID: 1322117433}
   - component: {fileID: 1322117432}
   - component: {fileID: 1322117434}
+  - component: {fileID: 1322117435}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -9468,6 +9469,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Load: {fileID: 2026652162}
+--- !u!114 &1322117435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1322117431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e7248d5de7e534eb3c2aa1deb9866d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1322140269
 GameObject:
   m_ObjectHideFlags: 0
@@ -9921,8 +9933,8 @@ MonoBehaviour:
   CenterCube: {fileID: 1628741650957762, guid: 7fd8c92beda54144cb1ab44088fa5ae1, type: 2}
   InsideCube: {fileID: 1628741650957762, guid: 7fd8c92beda54144cb1ab44088fa5ae1, type: 2}
   CountPanel: {fileID: 1638336874314992, guid: 190c9dce362edff45bbf3d5511861173, type: 2}
-  player1text: {fileID: 21170651}
-  player2text: {fileID: 1086467078}
+  player1text: {fileID: 1086467078}
+  player2text: {fileID: 21170651}
 --- !u!4 &1376109624
 Transform:
   m_ObjectHideFlags: 0

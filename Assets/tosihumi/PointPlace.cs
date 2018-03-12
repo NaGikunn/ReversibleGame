@@ -37,7 +37,7 @@ public class PointPlace : MonoBehaviour {
 				i = 1;
 			}
 		}
-		if (ren.material.name == "PrintMatPlayer2 (Instance)" && Wpoint == true)
+		else if (ren.material.name == "PrintMatPlayer2 (Instance)" && Wpoint == true)
 		{
 			if (i == 0 || i == 1)
 			{

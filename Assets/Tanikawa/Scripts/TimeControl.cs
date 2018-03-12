@@ -13,7 +13,7 @@ public class TimeControl : MonoBehaviour
     public Text SecondTimeLabel;  // 本番用TimeText
 
     float FirstTime;　　// 最初の10秒（ポイント取り合い）
-    float SecondTime;  // 本番の60秒（キューブが回り始める）
+    public static float SecondTime;  // 本番の60秒（キューブが回り始める）
     float RoteTime;　　//cCubeを呼び出すためのカウント
 
     bool firstTimeflg;   //最初のTimeを作動させるためのflg
@@ -87,6 +87,7 @@ public class TimeControl : MonoBehaviour
                 RoteTime = Mathf.Max(RoteTime, 0.0f);
                 if (RoteTime == 0.0f)
                 {
+					TextMaster3.GetComponent<TextManeger>().imaDanger();
                     cCube.GetComponent<StageMake>().RandomRote();
                     RoteTime = 10.0f;
                     Debug.Log("RoteTime");

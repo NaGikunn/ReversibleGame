@@ -34,21 +34,21 @@ public class Explain : MonoBehaviour
 
             if (plasScrollflg == true&&count<4)
             {
-                count += 1;
+                count += 4;
                 leftScr();
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-           minusScrollflg = true;
+        //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //   minusScrollflg = true;
 
-            if (minusScrollflg == true&&count>0)
-            {
-                count -= 1;
-                RightScr();
-            }
-        }
+        //    if (minusScrollflg == true&&count>0)
+        //    {
+        //        count -= 1;
+        //        //RightScr();
+        //    }
+        //}
 
         if (count == 4)
         {
@@ -64,74 +64,13 @@ public class Explain : MonoBehaviour
     //ページ進む
     void leftScr()
     {
-        if (count == 1)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Next2", true);
-            animator.SetBool("Back1", false);
-            plasScrollflg = false;
-        }
-        if (count == 2)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Next3", true);
-            animator.SetBool("Back2", false);
-            animator.SetBool("Next2", false);
-            plasScrollflg = false;
-        }
-        if (count == 3)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Next4", true);
-            animator.SetBool("back3", false);
-            animator.SetBool("Next3", false);
-            plasScrollflg = false;
-        }
         if (count == 4)
         {
             LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Next5", true);
-            animator.SetBool("Back4", false);
-            animator.SetBool("Next4", false);
+            animator.SetBool("Next2", true);
+            //animator.SetBool("Back1", false);
             plasScrollflg = false;
         }
     }
 
-    //ページ戻る
-    void RightScr()
-    {
-        if (count == 0)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            count = 0;
-            animator.SetBool("Back1", true);
-            animator.SetBool("Next2", false);
-            animator.SetBool("Back2", false);
-            plasScrollflg = false;
-        }
-        if (count == 1)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Back2", true);
-            animator.SetBool("Next3", false);
-            animator.SetBool("Back3", false);
-            plasScrollflg = false;
-        }
-        if (count == 2)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Back3", true);
-            animator.SetBool("Next4", false);
-            animator.SetBool("Back4", false);
-            plasScrollflg = false;
-        }
-        if (count == 3)
-        {
-            LoadFlick.PlayOneShot(LoadFlick.clip);
-            animator.SetBool("Back4", true);
-            animator.SetBool("Next5", false);
-            animator.SetBool("Back5", false);
-            plasScrollflg = false;
-        }
-    }
 }

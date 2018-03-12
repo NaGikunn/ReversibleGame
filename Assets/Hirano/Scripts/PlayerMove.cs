@@ -53,18 +53,22 @@ public class PlayerMove : MonoBehaviour
 		StartCoroutine(InputUpdate());
 		//Ray
 		PanelRay();
-		//回ってなければキー入力されない
-		if (!isRolling)
+		if(TimeControl.SecondTime > 0.0f)
 		{
-			//Switch
-			switch (State)
+			//回ってなければキー入力されない
+			if (!isRolling)
 			{
-				case PlayerState.Idol: return;
-				case PlayerState.Up: RollUp();  return;
-				case PlayerState.Down: RollDown();  return;
-				case PlayerState.Right: RollRight(); return;
-				case PlayerState.Left: RollLeft(); return;
+				//Switch
+				switch (State)
+				{
+					case PlayerState.Idol: return;
+					case PlayerState.Up: RollUp(); return;
+					case PlayerState.Down: RollDown(); return;
+					case PlayerState.Right: RollRight(); return;
+					case PlayerState.Left: RollLeft(); return;
+				}
 			}
+
 		}
 
 		//Downにいたときに戻るときの処理（少し複雑）
@@ -466,9 +470,9 @@ public class PlayerMove : MonoBehaviour
 			{
 				//最初はIdol
 				State = PlayerState.Idol;
-
 				if (MyName == "PlayerManger")
 				{
+					
 					if (Input.GetKeyDown(KeyCode.D))
 					{
 						State = PlayerState.Right;
@@ -491,6 +495,7 @@ public class PlayerMove : MonoBehaviour
 				}
 				else
 				{
+					
 					if (Input.GetKeyDown(KeyCode.RightArrow))
 					{
 						State = PlayerState.Right;

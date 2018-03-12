@@ -35,10 +35,14 @@ public class SceneLoad : MonoBehaviour
 
     void Start()
     {
+		FadeEndTiles = 0;
         LoadInterval = 1.0f;
         SceneName = SceneManager.GetActiveScene().name;
         Fade1 = GetComponent<AudioSource>();
-    }
+		SquareCount_H = 5;//敷詰横
+	    SquareCount_V = 5;//敷詰縦
+	}
+
     void Update()
     {
         
@@ -104,7 +108,7 @@ public class SceneLoad : MonoBehaviour
             {
                 IsFadeIn = false;
                 FadeEndTiles = 0;
-                if(SceneName == "Back")
+                if(SceneName == "MainScene")
                 {
                     LoadInterval = 6.5f;
                 }
@@ -160,7 +164,6 @@ public class SceneLoad : MonoBehaviour
     {
         StartCoroutine(FadeIn()); //FadeIn開始
         Fade1.PlayOneShot(Fade1.clip);
-        Debug.Log("Fade1");
     }
 
     public void ColOut()
