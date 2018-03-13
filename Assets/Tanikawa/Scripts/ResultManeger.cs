@@ -27,9 +27,9 @@ public class ResultManeger : MonoBehaviour
 
 		StartCoroutine(ResRoot());
 
-		LastPointB = PointPlace.CountW;
-		LastPointW = PointPlace.CountB;
-	}
+        LastPointB = PointPlace.CountW;
+        LastPointW = PointPlace.CountB;
+    }
 
 	// Update is called once per frame
 	void Update()
