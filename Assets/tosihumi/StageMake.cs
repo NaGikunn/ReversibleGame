@@ -105,7 +105,7 @@ public class StageMake : MonoBehaviour
         min = Random.Range(0, 5);//回転させるposition指定
         max = Random.Range(1, 4);//回転させるposition指定
         AngleMemory = Random.Range(0, 4);//角度の配列番号選択
-        RotaPattern = Random.Range(1, 2);//どの軸を回転させるか決める
+        RotaPattern = Random.Range(1, 4);//どの軸を回転させるか決める
         switch (RotaPattern)
         {
             case 1:

@@ -833,6 +833,37 @@ public class PlayerMove : MonoBehaviour
 				CameraControl2.BackSide = true;
 			}
 		}
+		if (Input.GetKeyDown(KeyCode.Y))
+		{
+			if (gameObject.name == "PlayerManger")
+			{
+				isFront = false;
+				isRight = false;
+				isLeft = false;
+				isBack = false;
+				isDown = false;
+				CameraControl.BackSide = false;
+				CameraControl.DownSide = false;
+				CameraControl.LeftSide = false;
+				CameraControl.RightSide = false;
+				PlayerPos = new Vector3(0, 1, 0);
+				transform.position = PlayerPos;
+			}
+			else
+			{
+				isFront = false;
+				isRight = false;
+				isLeft = false;
+				isBack = false;
+				isDown = false;
+				CameraControl2.BackSide = false;
+				CameraControl2.DownSide = false;
+				CameraControl2.LeftSide = false;
+				CameraControl2.RightSide = false;
+				PlayerPos = new Vector3(0, 1, 0);
+				transform.position = PlayerPos;
+			}
+		}
 	}
 
 	public void FootPrint(float Rx, float Ry)
@@ -848,7 +879,7 @@ public class PlayerMove : MonoBehaviour
 			Destroy(obj, 0.8f);
 		}
 	}
-
+	//外に出たときの救済処理
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.tag == "OutField")
@@ -856,7 +887,7 @@ public class PlayerMove : MonoBehaviour
 			Debug.Log("");
 			if (gameObject.name == "PlayerManger")
 			{
-				isFront = true;
+				isFront = false;
 				isRight = false;
 				isLeft = false;
 				isBack = false;
@@ -865,12 +896,12 @@ public class PlayerMove : MonoBehaviour
 				CameraControl.DownSide = false;
 				CameraControl.LeftSide = false;
 				CameraControl.RightSide = false;
-				PlayerPos = new Vector3(0, 0, 0);
+				PlayerPos = new Vector3(0, 1, 0);
 				transform.position = PlayerPos;
 			}
 			else
 			{
-				isFront = true;
+				isFront = false;
 				isRight = false;
 				isLeft = false;
 				isBack = false;
@@ -879,7 +910,7 @@ public class PlayerMove : MonoBehaviour
 				CameraControl2.DownSide = false;
 				CameraControl2.LeftSide = false;
 				CameraControl2.RightSide = false;
-				PlayerPos = new Vector3(0, 0, 0);
+				PlayerPos = new Vector3(0, 1, 0);
 				transform.position = PlayerPos;
 			}
 		}
